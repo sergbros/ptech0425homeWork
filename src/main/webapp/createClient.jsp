@@ -16,5 +16,7 @@
     </select></p>
     <p><input type="submit" name="B1" value="Создать"></p>
 </form>
+
+<jsp:include page="menu.jsp"/>
 </body>
 </html>

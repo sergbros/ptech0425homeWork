@@ -12,6 +12,8 @@
 <br/>
 <a href="db">DB Servlet</a>
 <br/>
+<a href="viewList">ViewL</a>
+<br/>
 <a href="createClient.jsp">Новый пользователь</a>
 </body>
 </html>
