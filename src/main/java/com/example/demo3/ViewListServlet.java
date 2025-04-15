@@ -79,7 +79,12 @@ public class ViewListServlet extends HttpServlet {
                     out.println("<tr>");
                     out.println("<td>" + cl.getClientId() + "</td>");
                     out.println("<td bgcolor=\"#C0C0C0\">" + cl.getClientName() + "</td>");
-                    out.println("<td>" + cl.getClientType() + "</td>");
+                    if(Integer.parseInt(cl.getClientType()) == 1){
+                        out.println("<td>" + "Физическое лицо" + "</td>");
+                    }
+                    else{
+                        out.println("<td>" + "Юридическое лицо" + "</td>");
+                    }
                     out.println("<td bgcolor=\"#C0C0C0\">" + "Адрес" + "</td>");
                     //out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientId() + ">Редактировать</a>" + "</td>");
                     out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientId() +"\">Редактировать</a>" + "</td>");
