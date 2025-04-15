@@ -30,7 +30,8 @@ public class CreateServlet extends HttpServlet {
         request.getSession().setAttribute("message", message);
 
         PrintWriter writer = response.getWriter();
-        writer.println("Method POST 11a from AddServlet");
+        writer.println("Method POST 11a from AddServlet\n");
+        writer.println(message);
 
     }
 }

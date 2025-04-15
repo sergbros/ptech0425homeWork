@@ -10,15 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c30bf0-46cb-4de6-89ef-3d6c07e536f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/CreateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/CreateServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo3/CreateServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo3/CreateServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/demo3-1.0-SNAPSHOT/WEB-INF/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo3-1.0-SNAPSHOT/WEB-INF/classes/META-INF/persistence.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/demo3-1.0-SNAPSHOT/WEB-INF/classes/com/example/demo3/CreateServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo3-1.0-SNAPSHOT/WEB-INF/classes/com/example/demo3/CreateServlet.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +181,7 @@
       <workItem from="1744486656170" duration="16220000" />
       <workItem from="1744648344894" duration="1280000" />
       <workItem from="1744649866532" duration="1199000" />
-      <workItem from="1744690881759" duration="169000" />
+      <workItem from="1744690881759" duration="856000" />
     </task>
     <servers />
   </component>
