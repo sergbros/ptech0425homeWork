@@ -19,7 +19,8 @@ import java.util.List;
 public class ViewListServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         //PrintWriter writer = response.getWriter();
         PrintWriter out = response.getWriter();
@@ -71,6 +72,7 @@ public class ViewListServlet extends HttpServlet {
                 out.println("<td><p align=\"center\">Type</td>");
                 out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Address</td>");
                 out.println("<td><p align=\"center\">Edit</td>");
+                out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Удаление</td>");
                 out.println("</tr>");
                 //Строка
                 for (Client cl : clients) {
@@ -79,7 +81,9 @@ public class ViewListServlet extends HttpServlet {
                     out.println("<td bgcolor=\"#C0C0C0\">" + cl.getClientName() + "</td>");
                     out.println("<td>" + cl.getClientType() + "</td>");
                     out.println("<td bgcolor=\"#C0C0C0\">" + "Адрес" + "</td>");
-                    out.println("<td>" + "Ссылка на редактирование с передаче параметра" + "</td>");
+                    //out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientId() + ">Редактировать</a>" + "</td>");
+                    out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientId() +"\">Редактировать</a>" + "</td>");
+                    out.println("<td>" + "<a href=\"delete?clientNumber=" + cl.getClientId() +"\">Удалить</a>" + "</td>");
                     out.println("</tr>");
                 }
                 //конец таблицы
