@@ -19,11 +19,9 @@ public class DBServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        //ArrayList<Client> clients = new ArrayList<Client>();
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         try{
-            //String url = "jdbc:mysql://localhost/productdb?serverTimezone=Europe/Moscow&useSSL=false";
             String url = "jdbc:postgresql://localhost:5432/postgres";
             String username = "postgres";
             String password = "1q2w3E4R";

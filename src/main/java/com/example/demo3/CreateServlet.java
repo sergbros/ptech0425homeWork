@@ -27,11 +27,6 @@ public class CreateServlet extends HttpServlet {
         Client client = new Client();
         client.setClientName(request.getParameter("name"));
         client.setClientType(request.getParameter("clientType"));
-        //String login = request.getParameter("name");
-        //String message = "Имя пользователя" + login;
-        //request.setAttribute("message", message);
-        //request.setAttribute("message", message);clientType
-        //request.getSession().setAttribute("message", message);
 
         PrintWriter writer = response.getWriter();
         writer.println("Method POST 11a from AddServlet\n");
