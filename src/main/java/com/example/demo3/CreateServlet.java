@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import static com.example.demo3.DBManager.createRecord;
+
 @WebServlet(name = "CreateServlet", value = "/create")
 public class CreateServlet extends HttpServlet {
 
@@ -24,13 +26,15 @@ public class CreateServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
-        Client client = new Client();
-        client.setClientName(request.getParameter("name"));
-        client.setClientType(request.getParameter("clientType"));
+        ClientTest clientTest = new ClientTest();
+        clientTest.setClientName(request.getParameter("name"));
+        clientTest.setClientType(request.getParameter("clientType"));
 
         PrintWriter writer = response.getWriter();
         writer.println("Method POST 11a from AddServlet\n");
-        writer.println(client.getClientName() + "\n" + client.getClientType());
+        writer.println(clientTest.getClientName() + "\n" + clientTest.getClientType());
+
+        createRecord();
 
     }
 }

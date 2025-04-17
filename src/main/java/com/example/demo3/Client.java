@@ -1,16 +1,27 @@
 package com.example.demo3;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-public class Client {
-    private Integer clientId;
-    private String clientName;
-    private String clientType;
-    //TODO переделать дату на тип Дата
-    private String clientAddedData;
-    //private List<ClientAddress> clientAdresses = new ArrayList<>();
+import java.sql.Date;
 
+@Setter
+@Getter
+@Entity @Table(name="client")
+public class Client {
+
+    @Id
+    @GeneratedValue
+    @Column(name="clientid", unique = true, nullable = false)
+    private Integer clientId;
+
+    @Column(name="client_name", length=100)
+    private String client_name;
+
+    @Column(name="type")
+    private String clientType;
+
+    @Column(name="added")
+    private Date added;
 }

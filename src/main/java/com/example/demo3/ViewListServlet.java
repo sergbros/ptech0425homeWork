@@ -1,6 +1,5 @@
 package com.example.demo3;
 
-import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -36,14 +35,14 @@ public class ViewListServlet extends HttpServlet {
 
                 Statement statement = conn.createStatement();
                 ResultSet resultSet = statement.executeQuery("SELECT * FROM client");
-                List<Client> clients = new ArrayList<>();
+                List<ClientTest> clientTests = new ArrayList<>();
                 while (resultSet.next()) {
-                    Client client = new Client();
-                    client.setClientId(resultSet.getInt(1));
-                    client.setClientName(resultSet.getString(2));
-                    client.setClientType(resultSet.getString(3));
-                    client.setClientAddedData(resultSet.getString(4));
-                    clients.add(client);
+                    ClientTest clientTest = new ClientTest();
+                    clientTest.setClientId(resultSet.getInt(1));
+                    clientTest.setClientName(resultSet.getString(2));
+                    clientTest.setClientType(resultSet.getString(3));
+                    clientTest.setClientAddedData(resultSet.getString(4));
+                    clientTests.add(clientTest);
                     //writer.println("<br>" + id + " " + name + " " + type + " " + addedDate);
                     //Client client = new Client(id, name, type);
                     //clients.add(client);
@@ -77,7 +76,7 @@ public class ViewListServlet extends HttpServlet {
                 out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Удаление</td>");
                 out.println("</tr>");
                 //Строка
-                for (Client cl : clients) {
+                for (ClientTest cl : clientTests) {
                     out.println("<tr>");
                     out.println("<td>" + cl.getClientId() + "</td>");
                     out.println("<td bgcolor=\"#C0C0C0\">" + cl.getClientName() + "</td>");
