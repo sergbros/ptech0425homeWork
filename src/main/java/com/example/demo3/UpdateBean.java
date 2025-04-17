@@ -1,8 +1,9 @@
 package com.example.demo3;
 
 import jakarta.ejb.Singleton;
+import jakarta.ejb.Stateless;
 
-@Singleton
+@Stateless
 public class UpdateBean implements UpdateService {
 
     public boolean update(Integer clientId){

@@ -10,12 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c30bf0-46cb-4de6-89ef-3d6c07e536f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/UpdateBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/UpdateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/UpdateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/UpdateServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/ViewListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/ViewListServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/UpdateBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/UpdateBean.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +68,7 @@
     "JBoss/WildFly Server.JBoss/WildFly 24.0.1.Final.executor": "Run",
     "JBoss/WildFly Server.JBoss/WildFly 36.0.0.Final.executor": "Run",
     "Maven.demo3 [clean].executor": "Run",
+    "Maven.demo3 [compile].executor": "Run",
     "Maven.demo3 [install].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -99,6 +97,7 @@
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
+      <command value="mvn compile" />
       <command value="mvn clean" />
       <command value="mvn install" />
     </option>
