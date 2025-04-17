@@ -3,7 +3,6 @@ package com.example.demo3;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.PersistenceContext;
 import lombok.extern.java.Log;
 
 
@@ -21,7 +20,7 @@ public class DBManager {
             EntityManager entityManager = getEntityManager();
             entityManager.getTransaction().begin();
 
-            Client ce = new Client();
+            Client234234234 ce = new Client234234234();
             ce.setClient_name("Client1" + System.currentTimeMillis());
 
             entityManager.persist(ce);

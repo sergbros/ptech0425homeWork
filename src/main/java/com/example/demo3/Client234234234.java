@@ -8,8 +8,8 @@ import java.sql.Date;
 
 @Setter
 @Getter
-@Entity @Table(name="client")
-public class Client {
+@Entity @Table(name="client242423423")
+public class Client234234234 {
 
     @Id
     @GeneratedValue

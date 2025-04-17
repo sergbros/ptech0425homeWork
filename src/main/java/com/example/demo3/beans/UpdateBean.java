@@ -1,6 +1,5 @@
-package com.example.demo3;
+package com.example.demo3.beans;
 
-import jakarta.ejb.Singleton;
 import jakarta.ejb.Stateless;
 
 @Stateless
