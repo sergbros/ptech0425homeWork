@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 public class UpdateServlet extends HttpServlet {
 
     @EJB
-    private UpdateBean updateBean;
+    private UpdateService updateService;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +29,7 @@ public class UpdateServlet extends HttpServlet {
         writer.println("<br>");
         writer.println("<jsp:include page=\"webapp\\menu.jsp\">");
 
-        if(updateBean.update(Integer.parseInt(request.getParameter("clientNumber")))) {
+        if(updateService.update(Integer.parseInt(request.getParameter("clientNumber")))) {
             writer.println("<br>");
             writer.println("Похоже, номер клиента 1.");
         }
