@@ -1,5 +1,6 @@
 package com.example.demo3;
 
+import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,6 +12,9 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "UpdateServlet", value = "/update")
 public class UpdateServlet extends HttpServlet {
+
+    @EJB
+    private UpdateBean updateBean;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,6 +28,15 @@ public class UpdateServlet extends HttpServlet {
         writer.println("Будем редактировать клиента с номером " + request.getParameter("clientNumber"));
         writer.println("<br>");
         writer.println("<jsp:include page=\"webapp\\menu.jsp\">");
+
+        if(updateBean.update(Integer.parseInt(request.getParameter("clientNumber")))) {
+            writer.println("<br>");
+            writer.println("Похоже, номер клиента 1.");
+        }
+        else {
+            writer.println("<br>");
+            writer.println("Похоже, номер клиента НЕ 1.");
+        }
 
     }
 
