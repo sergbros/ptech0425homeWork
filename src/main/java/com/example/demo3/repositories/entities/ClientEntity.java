@@ -1,6 +1,5 @@
 package com.example.demo3.repositories.entities;
 
-import com.example.demo3.ClientObject;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

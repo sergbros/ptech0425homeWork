@@ -1,6 +1,9 @@
 package com.example.demo3.repositories;
 
+import com.example.demo3.DBManager;
+import com.example.demo3.beans.DBManagerBean;
 import com.example.demo3.repositories.entities.ClientEntity;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Singleton;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -10,12 +13,11 @@ import java.util.List;
 @Singleton
 public class ClientRepository {
 
-    @PersistenceContext
-    private EntityManager em;
+    @EJB
+    private DBManagerBean dbManagerBean;
 
     public List<ClientEntity> read(){
-        //return em.createNativeQuery("SELECT * FROM public.client", ClientEntity.class).getResultList();
-        return em.createQuery("SELECT c FROM ClientEntity c", ClientEntity.class).getResultList();
+        return dbManagerBean.readClientFullList();
     }
 
 }

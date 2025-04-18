@@ -10,12 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c30bf0-46cb-4de6-89ef-3d6c07e536f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/beans/ViewListBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/beans/DBManagerBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/beans/DBManagerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/Client234234234.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/ClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/ClientObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/ClientAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/ClientObject.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/beans/ViewListService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/beans/ViewListService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/repositories/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/repositories/ClientRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/repositories/entities/ClientEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/repositories/entities/ClientEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/CreateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/CreateServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/ViewListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/ViewListServlet.java" afterDir="false" />
@@ -30,8 +31,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jsp File" />
-        <option value="Class" />
         <option value="com.intellij.jpb.JpaEntity" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -285,7 +287,7 @@
       <workItem from="1744690881759" duration="1193000" />
       <workItem from="1744778821318" duration="6326000" />
       <workItem from="1744901915140" duration="12178000" />
-      <workItem from="1744952308881" duration="1425000" />
+      <workItem from="1744952308881" duration="4578000" />
     </task>
     <servers />
   </component>

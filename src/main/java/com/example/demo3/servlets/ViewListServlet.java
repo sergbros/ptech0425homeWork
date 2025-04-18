@@ -1,6 +1,6 @@
 package com.example.demo3.servlets;
 
-import com.example.demo3.ClientObject;
+import com.example.demo3.DBManager;
 import com.example.demo3.repositories.ClientRepository;
 import com.example.demo3.repositories.entities.ClientEntity;
 import jakarta.ejb.EJB;
@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ViewListServlet", value = "/viewList")
@@ -22,6 +21,9 @@ public class ViewListServlet extends HttpServlet {
 
     @EJB
     private ClientRepository clientRepository;
+
+    @EJB
+    private DBManager dbManager;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
