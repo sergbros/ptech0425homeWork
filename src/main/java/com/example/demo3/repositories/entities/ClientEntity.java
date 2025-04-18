@@ -1,5 +1,6 @@
 package com.example.demo3.repositories.entities;
 
+import com.example.demo3.ClientObject;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,4 +33,8 @@ public class ClientEntity{
                 // добавьте другие поля
                 '}';
     }
+
+//    public ClientObject toClientObject(){
+//        return new ClientObject(id, clientName, type, added);
+//    }
 }

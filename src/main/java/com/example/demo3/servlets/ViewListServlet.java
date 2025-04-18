@@ -1,6 +1,9 @@
 package com.example.demo3.servlets;
 
-import com.example.demo3.ClientTest;
+import com.example.demo3.ClientObject;
+import com.example.demo3.repositories.ClientRepository;
+import com.example.demo3.repositories.entities.ClientEntity;
+import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,13 +14,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ViewListServlet", value = "/viewList")
 public class ViewListServlet extends HttpServlet {
+
+    @EJB
+    private ClientRepository clientRepository;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,20 +38,26 @@ public class ViewListServlet extends HttpServlet {
             try (Connection conn = DriverManager.getConnection(url, username, password)) {
                 //writer.println("Connection to ProductDB succesfull!");
 
-                Statement statement = conn.createStatement();
-                ResultSet resultSet = statement.executeQuery("SELECT * FROM client");
-                List<ClientTest> clientTests = new ArrayList<>();
-                while (resultSet.next()) {
-                    ClientTest clientTest = new ClientTest();
-                    clientTest.setClientId(resultSet.getInt(1));
-                    clientTest.setClientName(resultSet.getString(2));
-                    clientTest.setClientType(resultSet.getString(3));
-                    clientTest.setClientAddedData(resultSet.getString(4));
-                    clientTests.add(clientTest);
-                    //writer.println("<br>" + id + " " + name + " " + type + " " + addedDate);
-                    //Client client = new Client(id, name, type);
-                    //clients.add(client);
-                }
+                //Statement statement = conn.createStatement();
+                //ResultSet resultSet = statement.executeQuery("SELECT * FROM client");
+                //ResultSet resultSet =
+                List<ClientEntity> clientEntities = clientRepository.read();
+//                List<ClientObject> clientsAll = new ArrayList<>();
+//                for (ClientEntity clientEntity : clientEntities) {
+//                    clientsAll.add(clientEntity.toClientObject());
+//                }
+                //clientEntities = clientRepository.read();
+//                while (resultSet.next()) {
+//                    ClientTest clientTest = new ClientTest();
+//                    clientTest.setClientId(resultSet.getInt(1));
+//                    clientTest.setClientName(resultSet.getString(2));
+//                    clientTest.setClientType(resultSet.getString(3));
+//                    clientTest.setClientAddedData(resultSet.getString(4));
+//                    clientEntities.add(clientTest);
+//                    //writer.println("<br>" + id + " " + name + " " + type + " " + addedDate);
+//                    //Client client = new Client(id, name, type);
+//                    //clients.add(client);
+//                }
 
                 out.println("<html><head>");
                 out.println("<meta charset=\"UTF-8\">");
@@ -77,11 +87,11 @@ public class ViewListServlet extends HttpServlet {
                 out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Удаление</td>");
                 out.println("</tr>");
                 //Строка
-                for (ClientTest cl : clientTests) {
+                for (ClientEntity cl : clientEntities) {
                     out.println("<tr>");
-                    out.println("<td>" + cl.getClientId() + "</td>");
+                    out.println("<td>" + cl.getId() + "</td>");
                     out.println("<td bgcolor=\"#C0C0C0\">" + cl.getClientName() + "</td>");
-                    if(Integer.parseInt(cl.getClientType()) == 1){
+                    if(Integer.parseInt(cl.getType()) == 1){
                         out.println("<td>" + "Физическое лицо" + "</td>");
                     }
                     else{
@@ -89,8 +99,8 @@ public class ViewListServlet extends HttpServlet {
                     }
                     out.println("<td bgcolor=\"#C0C0C0\">" + "Адрес" + "</td>");
                     //out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientId() + ">Редактировать</a>" + "</td>");
-                    out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientId() +"\">Редактировать</a>" + "</td>");
-                    out.println("<td>" + "<a href=\"delete?clientNumber=" + cl.getClientId() +"\">Удалить</a>" + "</td>");
+                    out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getId() +"\">Редактировать</a>" + "</td>");
+                    out.println("<td>" + "<a href=\"delete?clientNumber=" + cl.getId() +"\">Удалить</a>" + "</td>");
                     out.println("</tr>");
                 }
                 //конец таблицы

@@ -6,7 +6,7 @@
     <persistence-unit name="default">
         <jta-data-source>java:/PostgresDS</jta-data-source>
         <!--
-        <class>com.example.demo3.Client234234234</class>
+        <class>com.example.demo3.ClientObject</class>
         <class>com.example.demo3.DBManager</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>

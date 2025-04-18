@@ -20,11 +20,11 @@ public class DBManager {
             EntityManager entityManager = getEntityManager();
             entityManager.getTransaction().begin();
 
-            Client234234234 ce = new Client234234234();
-            ce.setClient_name("Client1" + System.currentTimeMillis());
+            //ClientObject ce = new ClientObject();
+            //ce.setClient_name("Client1" + System.currentTimeMillis());
 
-            entityManager.persist(ce);
-            entityManager.getTransaction().commit();
+            //entityManager.persist(ce);
+            //entityManager.getTransaction().commit();
         }
         catch (Exception e) {
             log.info(e.getMessage());
