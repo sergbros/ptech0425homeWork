@@ -14,7 +14,8 @@ public class ClientRepository {
     private EntityManager em;
 
     public List<ClientEntity> read(){
-        return em.createNativeQuery("SELECT * FROM public.client", ClientEntity.class).getResultList();
+        //return em.createNativeQuery("SELECT * FROM public.client", ClientEntity.class).getResultList();
+        return em.createQuery("SELECT c FROM ClientEntity c", ClientEntity.class).getResultList();
     }
 
 }

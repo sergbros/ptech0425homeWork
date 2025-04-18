@@ -10,8 +10,7 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "client")
-public class ClientEntity implements java.io.Serializable {
-    private static final long serialVersionUID = -2475931424403681430L;
+public class ClientEntity{
     @Id
     @Column(name = "clientid", nullable = false)
     private Integer id;
@@ -25,4 +24,12 @@ public class ClientEntity implements java.io.Serializable {
     @Column(name = "added")
     private LocalDate added;
 
+    @Override
+    public String toString() {
+        return "ClientEntity{" +
+                "clientid=" + id +
+                ", clientName='" + clientName + '\'' +
+                // добавьте другие поля
+                '}';
+    }
 }
