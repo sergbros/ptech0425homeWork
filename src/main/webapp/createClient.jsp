@@ -14,6 +14,10 @@
         <option selected>Физическое лицо</option>
         <option>Юридическое лицо</option>
     </select></p>
+    <p>Сетевой IP адрес устройства: <input type="text" size="25" name="ipAddress"></p>
+    <p>Физический адрес устройства (MAC): <input type="text" size="20" name="macAddress"></p>
+    <p>Модель устройства: <input type="text" size="100" name="model"></p>
+    <p>Адрес места нахождения: <input type="text" size="200" name="postaddress"></p>
     <p><input type="submit" name="B1" value="Создать"></p>
 </form>
 

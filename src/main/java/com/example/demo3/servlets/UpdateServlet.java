@@ -20,9 +20,6 @@ public class UpdateServlet extends HttpServlet {
     private UpdateService updateService;
 
     @EJB
-    private ClientRepository clientRepository;
-
-    @EJB
     private DBManager dbManager;
 
     @Override
@@ -47,7 +44,6 @@ public class UpdateServlet extends HttpServlet {
             writer.println("Похоже, номер клиента НЕ 1.");
         }
 
-        writer.println(clientRepository.read());
         writer.println(dbManager.readAllUsersList());
 
     }

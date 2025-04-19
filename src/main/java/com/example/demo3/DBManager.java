@@ -1,5 +1,6 @@
 package com.example.demo3;
 
+import com.example.demo3.repositories.entities.AddressEntity;
 import com.example.demo3.repositories.entities.ClientEntity;
 import jakarta.ejb.Singleton;
 import jakarta.persistence.EntityManager;
@@ -34,8 +35,12 @@ public class DBManager {
 
     public void writeClient(ClientEntity client) {
         log("DBManager: Write client");
-        client.setId(getMaxIdFromDataBase() + 1);
         em.persist(client);
+    }
+
+    public void writeAddress(AddressEntity address) {
+        log("DBManager: Write address");
+        em.persist(address);
     }
 
     public Integer getMaxIdFromDataBase() {

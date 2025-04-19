@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "adress")
-public class AdressEntity {
+public class AddressEntity {
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "clientid")
@@ -17,7 +17,12 @@ public class AdressEntity {
     @Column(name = "ip")
     private String ip;
 
-    @Column(name = "mac", nullable = false)
+    @Column(name = "mac")
     private String mac;
 
+    @Column(name = "model")
+    private String model;
+
+    @Column(name = "postaddress")
+    private String postaddress;
 }

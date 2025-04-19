@@ -3,15 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <Grants>1||-9223372036854775808|c|G
-1||10|c|G
-1||10|C|G
-1||10|T|G
-4||-9223372036854775808|c|G
-4||10|c|G
-4||10|C|G
-4||10|T|G</Grants>
-      <IntrospectionStateNumber>758</IntrospectionStateNumber>
+      <IntrospectionStateNumber>785</IntrospectionStateNumber>
       <ServerVersion>17.4</ServerVersion>
       <StartupTime>1744484356</StartupTime>
       <TimeZones>true ACDT
@@ -809,7 +801,7 @@ false Zulu
 14751||10|C|G
 14751||-9223372036854775808|U|G
 14751||10|U|G</Grants>
-      <IntrospectionStateNumber>758</IntrospectionStateNumber>
+      <IntrospectionStateNumber>785</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4231,15 +4223,15 @@ false Zulu
     <schema id="264" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>758</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2025-04-17.13:13:54</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>785</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2025-04-19.17:14:59</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
     <table id="265" parent="264" name="adress">
       <ObjectId>16387</ObjectId>
-      <StateNumber>751</StateNumber>
+      <StateNumber>783</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
@@ -4256,34 +4248,45 @@ false Zulu
       <TypeId>1043</TypeId>
     </column>
     <column id="268" parent="265" name="mac">
-      <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>749</StateNumber>
+      <StateNumber>784</StateNumber>
       <StoredType>varchar|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
     <column id="269" parent="265" name="clientid">
       <Comment>клиент</Comment>
       <Position>3</Position>
-      <StateNumber>750</StateNumber>
+      <StateNumber>781</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="270" parent="265" name="adress_client_fk">
+    <column id="270" parent="265" name="model">
+      <Position>4</Position>
+      <StateNumber>782</StateNumber>
+      <StoredType>varchar|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="271" parent="265" name="postaddress">
+      <Position>5</Position>
+      <StateNumber>783</StateNumber>
+      <StoredType>varchar|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="272" parent="265" name="adress_client_fk">
       <ColNames>clientid</ColNames>
-      <ObjectId>16399</ObjectId>
-      <StateNumber>751</StateNumber>
+      <ObjectId>16404</ObjectId>
+      <StateNumber>781</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16392</RefTableId>
     </foreign-key>
-    <column id="271" parent="266" name="clientid">
+    <column id="273" parent="266" name="clientid">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>748</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="272" parent="266" name="client_name">
+    <column id="274" parent="266" name="client_name">
       <Comment>Имя клиента</Comment>
       <NotNull>1</NotNull>
       <Position>2</Position>
@@ -4291,21 +4294,21 @@ false Zulu
       <StoredType>varchar|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="273" parent="266" name="type">
+    <column id="275" parent="266" name="type">
       <Comment>Тип клиента</Comment>
       <Position>3</Position>
       <StateNumber>748</StateNumber>
       <StoredType>varchar|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="274" parent="266" name="added">
+    <column id="276" parent="266" name="added">
       <Comment>Lfnf lj,fdktybz</Comment>
       <Position>4</Position>
       <StateNumber>748</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <index id="275" parent="266" name="client_pk">
+    <index id="277" parent="266" name="client_pk">
       <ColNames>clientid</ColNames>
       <ObjectId>16397</ObjectId>
       <Primary>1</Primary>
@@ -4313,7 +4316,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="276" parent="266" name="client_pk">
+    <key id="278" parent="266" name="client_pk">
       <ObjectId>16398</ObjectId>
       <Primary>1</Primary>
       <StateNumber>748</StateNumber>
