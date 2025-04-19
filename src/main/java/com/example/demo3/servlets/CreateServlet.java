@@ -1,6 +1,5 @@
 package com.example.demo3.servlets;
 
-import com.example.demo3.ClientObject;
 import com.example.demo3.DBManager;
 import com.example.demo3.repositories.entities.ClientEntity;
 import jakarta.ejb.EJB;

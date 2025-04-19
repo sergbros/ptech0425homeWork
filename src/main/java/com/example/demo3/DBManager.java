@@ -19,11 +19,15 @@ public class DBManager {
     private EntityManager em;
 
     public List<ClientEntity> readAllUsersList() {
-        return em.createQuery("SELECT c FROM ClientEntity c", ClientEntity .class).getResultList();
+        return em.createQuery("SELECT c FROM ClientEntity c", ClientEntity.class).getResultList();
     }
 
     public void writeClient(ClientEntity client) {
-        client.setId(3);
+        client.setId(getMaxIdFromDataBase() + 1);
         em.persist(client);
+    }
+
+    public Integer getMaxIdFromDataBase() {
+        return em.createQuery("SELECT MAX(c.id) FROM ClientEntity c", Integer.class).getSingleResult();
     }
 }
