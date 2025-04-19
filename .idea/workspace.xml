@@ -10,14 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c30bf0-46cb-4de6-89ef-3d6c07e536f0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/13d019a5-8d64-4a13-baf4-28463a00e31f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/13d019a5-8d64-4a13-baf4-28463a00e31f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/13d019a5-8d64-4a13-baf4-28463a00e31f/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/13d019a5-8d64-4a13-baf4-28463a00e31f/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/repositories/entities/AdressEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/repositories/entities/AddressEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/repositories/ClientRepository.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/CreateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/CreateServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/UpdateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/UpdateServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/createClient.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/createClient.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/ViewListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/ViewListServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menu.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,7 +284,7 @@
       <workItem from="1744901915140" duration="12178000" />
       <workItem from="1744952308881" duration="1425000" />
       <workItem from="1744997897718" duration="2497000" />
-      <workItem from="1745068875540" duration="7059000" />
+      <workItem from="1745068875540" duration="8229000" />
     </task>
     <servers />
   </component>
@@ -321,7 +319,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/ViewListServlet.java</url>
-          <line>37</line>
+          <line>34</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

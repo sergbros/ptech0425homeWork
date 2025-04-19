@@ -2,7 +2,6 @@ package com.example.demo3.servlets;
 
 import com.example.demo3.DBManager;
 import com.example.demo3.beans.ViewListService;
-import com.example.demo3.repositories.ClientRepository;
 import com.example.demo3.repositories.entities.ClientEntity;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
@@ -13,8 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.List;
 

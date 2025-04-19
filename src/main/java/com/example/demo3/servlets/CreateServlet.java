@@ -64,5 +64,8 @@ public class CreateServlet extends HttpServlet {
 
         dbManager.writeClient(client);
         dbManager.writeAddress(address);
+
+        String contextPath = request.getContextPath();
+        response.sendRedirect(contextPath + "/viewList?mode=last10");
     }
 }

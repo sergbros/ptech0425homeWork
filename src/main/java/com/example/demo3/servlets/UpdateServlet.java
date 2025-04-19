@@ -2,7 +2,6 @@ package com.example.demo3.servlets;
 
 import com.example.demo3.DBManager;
 import com.example.demo3.beans.UpdateService;
-import com.example.demo3.repositories.ClientRepository;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
