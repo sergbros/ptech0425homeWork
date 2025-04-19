@@ -1,5 +1,7 @@
 package com.example.demo3.servlets;
 
+import com.example.demo3.DBManager;
+import com.example.demo3.beans.ViewListService;
 import com.example.demo3.repositories.ClientRepository;
 import com.example.demo3.repositories.entities.ClientEntity;
 import jakarta.ejb.EJB;
@@ -20,17 +22,32 @@ import java.util.List;
 public class ViewListServlet extends HttpServlet {
 
     @EJB
-    private ClientRepository clientRepository;
+    private ViewListService viewListService;
+
+    @EJB
+    private DBManager dbManager;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
-        //PrintWriter writer = response.getWriter();
-        PrintWriter out = response.getWriter();
 
-        List<ClientEntity> clientEntities = clientRepository.read();
+        List<ClientEntity> clientEntities = new ArrayList<>();
+
+        switch (viewListService.viewList(String.valueOf(request.getParameter("mode")))){
+            case ("full"):
+                clientEntities = dbManager.readAllUsersList();
+                break;
+            case ("last10"):
+                clientEntities = dbManager.readTop10LastUsersList();
+                break;
+            default:
+                clientEntities = dbManager.readAllUsersList();
+                break;
+        }
+
+        PrintWriter out = response.getWriter();
 
         out.println("<html><head>");
         out.println("<meta charset=\"UTF-8\">");

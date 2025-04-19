@@ -25,6 +25,13 @@ public class DBManager {
         return em.createQuery("SELECT c FROM ClientEntity c", ClientEntity.class).getResultList();
     }
 
+    public List<ClientEntity> readTop10LastUsersList() {
+        log("DBManager: Read all users");
+        return em.createQuery("SELECT c FROM ClientEntity c ORDER BY c.id DESC", ClientEntity.class)
+                .setMaxResults(10)
+                .getResultList();
+    }
+
     public void writeClient(ClientEntity client) {
         log("DBManager: Write client");
         client.setId(getMaxIdFromDataBase() + 1);
