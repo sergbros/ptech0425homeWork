@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 
 @WebServlet(name = "CreateServlet", value = "/create")
 public class CreateServlet extends HttpServlet {
@@ -30,9 +31,17 @@ public class CreateServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
+
         ClientEntity client = new ClientEntity();
         client.setClientName(request.getParameter("name"));
         client.setType(request.getParameter("clientType"));
+        if(request.getParameter("clientType").equals("Физическое лицо")){
+            client.setType("1");
+        }
+        else{
+            client.setType("2");
+        }
+        client.setAdded(LocalDate.now());
 
         PrintWriter writer = response.getWriter();
         writer.println("Method POST 11a from AddServlet\n");
