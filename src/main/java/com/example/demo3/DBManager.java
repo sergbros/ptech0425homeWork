@@ -1,36 +1,29 @@
 package com.example.demo3;
 
+import com.example.demo3.repositories.entities.ClientEntity;
+import jakarta.ejb.Singleton;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.PersistenceContext;
 import lombok.extern.java.Log;
 
-
+import java.util.List;
 
 @Log
+@Singleton
 public class DBManager {
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
 
-    public static EntityManager getEntityManager() {
-        return emf.createEntityManager();
+    @PersistenceContext
+    private EntityManager em;
+
+    public List<ClientEntity> readAllUsersList() {
+        return em.createQuery("SELECT c FROM ClientEntity c", ClientEntity .class).getResultList();
     }
 
-    public static void createRecord() {
-        try {
-            EntityManager entityManager = getEntityManager();
-            entityManager.getTransaction().begin();
-
-            //ClientObject ce = new ClientObject();
-            //ce.setClient_name("Client1" + System.currentTimeMillis());
-
-            //entityManager.persist(ce);
-            //entityManager.getTransaction().commit();
-        }
-        catch (Exception e) {
-            log.info(e.getMessage());
-        }
+    public void writeClient(ClientEntity client) {
+        client.setId(3);
+        em.persist(client);
     }
-    public static void retrieveRecord() { }
-    public static void updateRecord() { }
-    public static void deleteRecord() { }
 }

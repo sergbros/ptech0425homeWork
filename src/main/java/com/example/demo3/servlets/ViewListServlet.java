@@ -36,28 +36,7 @@ public class ViewListServlet extends HttpServlet {
             String password = "1q2w3E4R";
             Object obj = Class.forName("org.postgresql.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = DriverManager.getConnection(url, username, password)) {
-                //writer.println("Connection to ProductDB succesfull!");
-
-                //Statement statement = conn.createStatement();
-                //ResultSet resultSet = statement.executeQuery("SELECT * FROM client");
-                //ResultSet resultSet =
                 List<ClientEntity> clientEntities = clientRepository.read();
-//                List<ClientObject> clientsAll = new ArrayList<>();
-//                for (ClientEntity clientEntity : clientEntities) {
-//                    clientsAll.add(clientEntity.toClientObject());
-//                }
-                //clientEntities = clientRepository.read();
-//                while (resultSet.next()) {
-//                    ClientTest clientTest = new ClientTest();
-//                    clientTest.setClientId(resultSet.getInt(1));
-//                    clientTest.setClientName(resultSet.getString(2));
-//                    clientTest.setClientType(resultSet.getString(3));
-//                    clientTest.setClientAddedData(resultSet.getString(4));
-//                    clientEntities.add(clientTest);
-//                    //writer.println("<br>" + id + " " + name + " " + type + " " + addedDate);
-//                    //Client client = new Client(id, name, type);
-//                    //clients.add(client);
-//                }
 
                 out.println("<html><head>");
                 out.println("<meta charset=\"UTF-8\">");
@@ -65,15 +44,6 @@ public class ViewListServlet extends HttpServlet {
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<h1>Таблица всех пользователей</h1>");
-
-                //out.println("<form action=\"auth\" method=\"post\">");
-                //out.println("<label>Логин</label>");
-                //out.println("<input type=\"text\" name=\"login\" /><br><br>");
-                //out.println("<p hidden=\"false\">Логин не валиден</p>");
-                //out.println("<label>Пароль</label>");
-                //out.println("<input type=\"password\" name=\"password\" /><br><br>");
-                //out.println("<input type=\"submit\" name=\"singin\" value=\"Войти\">");
-                //out.println("</form>");
 
                 //Таблица
                 out.println("<table border=\"0\">");

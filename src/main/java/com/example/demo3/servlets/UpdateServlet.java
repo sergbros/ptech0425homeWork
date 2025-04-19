@@ -1,5 +1,6 @@
 package com.example.demo3.servlets;
 
+import com.example.demo3.DBManager;
 import com.example.demo3.beans.UpdateService;
 import com.example.demo3.repositories.ClientRepository;
 import jakarta.ejb.EJB;
@@ -20,6 +21,9 @@ public class UpdateServlet extends HttpServlet {
 
     @EJB
     private ClientRepository clientRepository;
+
+    @EJB
+    private DBManager dbManager;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,6 +48,7 @@ public class UpdateServlet extends HttpServlet {
         }
 
         writer.println(clientRepository.read());
+        writer.println(dbManager.readAllUsersList());
 
     }
 
