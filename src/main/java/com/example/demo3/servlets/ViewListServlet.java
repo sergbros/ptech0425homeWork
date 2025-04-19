@@ -29,61 +29,47 @@ public class ViewListServlet extends HttpServlet {
         response.setContentType("text/html");
         //PrintWriter writer = response.getWriter();
         PrintWriter out = response.getWriter();
-        try {
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String username = "postgres";
-            String password = "1q2w3E4R";
-            Object obj = Class.forName("org.postgresql.Driver").getDeclaredConstructor().newInstance();
-            try (Connection conn = DriverManager.getConnection(url, username, password)) {
-                List<ClientEntity> clientEntities = clientRepository.read();
 
-                out.println("<html><head>");
-                out.println("<meta charset=\"UTF-8\">");
-                out.println("<title>ViewList</title>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Таблица всех пользователей</h1>");
+        List<ClientEntity> clientEntities = clientRepository.read();
 
-                //Таблица
-                out.println("<table border=\"0\">");
-                //Заголовок
-                out.println("<tr>");
-                out.println("<td><p align=\"center\">Number</td>");
-                out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Name</td>");
-                out.println("<td><p align=\"center\">Type</td>");
-                out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Address</td>");
-                out.println("<td><p align=\"center\">Edit</td>");
-                out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Удаление</td>");
-                out.println("</tr>");
-                //Строка
-                for (ClientEntity cl : clientEntities) {
-                    out.println("<tr>");
-                    out.println("<td>" + cl.getId() + "</td>");
-                    out.println("<td bgcolor=\"#C0C0C0\">" + cl.getClientName() + "</td>");
-                    if(Integer.parseInt(cl.getType()) == 1){
-                        out.println("<td>" + "Физическое лицо" + "</td>");
-                    }
-                    else{
-                        out.println("<td>" + "Юридическое лицо" + "</td>");
-                    }
-                    out.println("<td bgcolor=\"#C0C0C0\">" + "Адрес" + "</td>");
-                    //out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientId() + ">Редактировать</a>" + "</td>");
-                    out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getId() +"\">Редактировать</a>" + "</td>");
-                    out.println("<td>" + "<a href=\"delete?clientNumber=" + cl.getId() +"\">Удалить</a>" + "</td>");
-                    out.println("</tr>");
-                }
-                //конец таблицы
-                out.println("</table>");
+        out.println("<html><head>");
+        out.println("<meta charset=\"UTF-8\">");
+        out.println("<title>ViewList</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>Таблица всех пользователей</h1>");
 
-
-                out.println("</body></html>");
+        //Таблица
+        out.println("<table border=\"0\">");
+        //Заголовок
+        out.println("<tr>");
+        out.println("<td><p align=\"center\">Number</td>");
+        out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Name</td>");
+        out.println("<td><p align=\"center\">Type</td>");
+        out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Address</td>");
+        out.println("<td><p align=\"center\">Edit</td>");
+        out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Удаление</td>");
+        out.println("</tr>");
+        //Строка
+        for (ClientEntity cl : clientEntities) {
+            out.println("<tr>");
+            out.println("<td>" + cl.getId() + "</td>");
+            out.println("<td bgcolor=\"#C0C0C0\">" + cl.getClientName() + "</td>");
+            if (Integer.parseInt(cl.getType()) == 1) {
+                out.println("<td>" + "Физическое лицо" + "</td>");
+            } else {
+                out.println("<td>" + "Юридическое лицо" + "</td>");
             }
-        } catch (Exception ex) {
-
-            out.println("Connection failed...\n");
-            out.println(ex);
-        } finally {
-            out.close();
+            out.println("<td bgcolor=\"#C0C0C0\">" + "Адрес" + "</td>");
+            //out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientId() + ">Редактировать</a>" + "</td>");
+            out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getId() + "\">Редактировать</a>" + "</td>");
+            out.println("<td>" + "<a href=\"delete?clientNumber=" + cl.getId() + "\">Удалить</a>" + "</td>");
+            out.println("</tr>");
         }
+        //конец таблицы
+        out.println("</table>");
+
+
+        out.println("</body></html>");
     }
 }
