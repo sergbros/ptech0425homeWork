@@ -7,4 +7,9 @@
 <br/>
 <a href="viewList?mode=full">Список всех пользователей</a>
 <br/>
+<a href="viewList?mode=address">Список всех пользователей c адресами</a>
+<br/>
+<a href="viewList?mode=clientName">Список всех пользователей c именем Мих</a>
+<br/>
+clientName
 <a href="createClient.jsp">Новый пользователь</a>

@@ -48,7 +48,7 @@ public class CreateServlet extends HttpServlet {
         }
         //Добавляем сегодняшнюю дату
         client.setAdded(LocalDate.now());
-        client.setId(clientId);
+        client.setClientid(clientId);
 
         //Создаём адрес
         AddressEntity address = new AddressEntity();

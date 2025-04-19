@@ -43,7 +43,7 @@ public class UpdateServlet extends HttpServlet {
             writer.println("Похоже, номер клиента НЕ 1.");
         }
 
-        writer.println(dbManager.readAllUsersList());
+        writer.println(dbManager.readAllAddressesList());
 
     }
 

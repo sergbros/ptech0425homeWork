@@ -2,8 +2,10 @@ package com.example.demo3.servlets;
 
 import com.example.demo3.DBManager;
 import com.example.demo3.beans.ViewListService;
+import com.example.demo3.repositories.entities.AddressEntity;
 import com.example.demo3.repositories.entities.ClientEntity;
 import jakarta.ejb.EJB;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -31,16 +33,23 @@ public class ViewListServlet extends HttpServlet {
         response.setContentType("text/html");
 
         List<ClientEntity> clientEntities = new ArrayList<>();
+        List<AddressEntity> addressEntities = new ArrayList<>();
 
         switch (viewListService.viewList(String.valueOf(request.getParameter("mode")))){
-            case ("full"):
-                clientEntities = dbManager.readAllUsersList();
+            case "address":
+                addressEntities = dbManager.readAllAddressesList();
                 break;
-            case ("last10"):
+            case "clientName":
+                addressEntities = dbManager.readAllUsersByName("Вениами");
+                break;
+            case "full":
+                clientEntities = dbManager.readAllUsersListOld();
+                break;
+            case "last10":
                 clientEntities = dbManager.readTop10LastUsersList();
                 break;
             default:
-                clientEntities = dbManager.readAllUsersList();
+                clientEntities = dbManager.readAllUsersListOld();
                 break;
         }
 
@@ -51,7 +60,7 @@ public class ViewListServlet extends HttpServlet {
         out.println("<title>ViewList</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>Таблица всех пользователей</h1>");
+        out.println("<h1>Таблица пользователей</h1>");
 
         //Таблица
         out.println("<table border=\"0\">");
@@ -64,25 +73,54 @@ public class ViewListServlet extends HttpServlet {
         out.println("<td><p align=\"center\">Edit</td>");
         out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Удаление</td>");
         out.println("</tr>");
-        //Строка
-        for (ClientEntity cl : clientEntities) {
-            out.println("<tr>");
-            out.println("<td>" + cl.getId() + "</td>");
-            out.println("<td bgcolor=\"#C0C0C0\">" + cl.getClientName() + "</td>");
-            if (Integer.parseInt(cl.getType()) == 1) {
-                out.println("<td>" + "Физическое лицо" + "</td>");
-            } else {
-                out.println("<td>" + "Юридическое лицо" + "</td>");
+
+
+        switch (viewListService.viewList(String.valueOf(request.getParameter("mode")))) {
+            default:
+            //Строка
+            for (ClientEntity cl : clientEntities) {
+                out.println("<tr>");
+                out.println("<td>" + cl.getClientid() + "</td>");
+                out.println("<td bgcolor=\"#C0C0C0\">" + cl.getClientName() + "</td>");
+                if (Integer.parseInt(cl.getType()) == 1) {
+                    out.println("<td>" + "Физическое лицо" + "</td>");
+                } else {
+                    out.println("<td>" + "Юридическое лицо" + "</td>");
+                }
+                out.println("<td bgcolor=\"#C0C0C0\">" + "Адрес" + "</td>");
+                //out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientId() + ">Редактировать</a>" + "</td>");
+                out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientid() + "\">Редактировать</a>" + "</td>");
+                out.println("<td>" + "<a href=\"delete?clientNumber=" + cl.getClientid() + "\">Удалить</a>" + "</td>");
+                out.println("</tr>");
             }
-            out.println("<td bgcolor=\"#C0C0C0\">" + "Адрес" + "</td>");
-            //out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientId() + ">Редактировать</a>" + "</td>");
-            out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getId() + "\">Редактировать</a>" + "</td>");
-            out.println("<td>" + "<a href=\"delete?clientNumber=" + cl.getId() + "\">Удалить</a>" + "</td>");
-            out.println("</tr>");
+            break;
+            case "address": case "clientName":
+                //Строка
+                for (AddressEntity addr : addressEntities) {
+                    ClientEntity cl = (addr.getClientid());
+                    out.println("<tr>");
+                    out.println("<td>" + cl.getClientid() + "</td>");
+                    out.println("<td bgcolor=\"#C0C0C0\">" + cl.getClientName() + "</td>");
+                    if (Integer.parseInt(cl.getType()) == 1) {
+                        out.println("<td>" + "Физическое лицо" + "</td>");
+                    } else {
+                        out.println("<td>" + "Юридическое лицо" + "</td>");
+                    }
+                    out.println("<td bgcolor=\"#C0C0C0\">" + addr.getPostaddress() + "</td>");
+                    //out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientId() + ">Редактировать</a>" + "</td>");
+                    out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientid() + "\">Редактировать</a>" + "</td>");
+                    out.println("<td>" + "<a href=\"delete?clientNumber=" + cl.getClientid() + "\">Удалить</a>" + "</td>");
+                    out.println("</tr>");
+                }
+                break;
         }
+
+
         //конец таблицы
         out.println("</table>");
 
+        RequestDispatcher footerDispatcher = request.getRequestDispatcher("/menu.jsp");
+        footerDispatcher.include(request, response);
 
         out.println("</body></html>");
     }

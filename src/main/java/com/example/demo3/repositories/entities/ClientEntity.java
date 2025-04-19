@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class ClientEntity{
     @Id
     @Column(name = "clientid", nullable = false)
-    private Integer id;
+    private Integer clientid;
 
     @Column(name = "client_name", nullable = false)
     private String clientName;
@@ -27,7 +27,7 @@ public class ClientEntity{
     @Override
     public String toString() {
         return "ClientEntity{" +
-                "clientid=" + id +
+                "clientid=" + clientid +
                 ", clientName='" + clientName + '\'' +
                 // добавьте другие поля
                 '}';

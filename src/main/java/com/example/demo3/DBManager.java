@@ -21,30 +21,44 @@ public class DBManager {
     @PersistenceContext
     private EntityManager em;
 
-    public List<ClientEntity> readAllUsersList() {
-        log("DBManager: Read all users");
+    public List<AddressEntity> readAllAddressesList() {
+        return em.createQuery("SELECT DISTINCT a FROM AddressEntity a " +
+                "LEFT JOIN FETCH a.clientid", AddressEntity.class).getResultList();
+    }
+
+    public List<AddressEntity> readAllUsersByName(String clientName) {
+        String pattern = "%" + clientName.trim() + "%";
+        return em.createQuery("SELECT DISTINCT a FROM AddressEntity a " +
+                "LEFT JOIN FETCH a.clientid WHERE a.clientid.clientName LIKE :pattern", AddressEntity.class)
+                .setParameter("pattern", pattern)
+                .getResultList();
+    }
+
+    public List<ClientEntity> readAllUsersListOld() {
         return em.createQuery("SELECT c FROM ClientEntity c", ClientEntity.class).getResultList();
     }
 
     public List<ClientEntity> readTop10LastUsersList() {
-        log("DBManager: Read all users");
-        return em.createQuery("SELECT c FROM ClientEntity c ORDER BY c.id DESC", ClientEntity.class)
+        return em.createQuery("SELECT c FROM ClientEntity c ORDER BY c.clientid DESC", ClientEntity.class)
                 .setMaxResults(10)
                 .getResultList();
     }
 
+    public ClientEntity readUserById(int clientId) {
+        return em.createQuery("SELECT c FROM ClientEntity c WHERE c.clientid = :clientId", ClientEntity.class)
+                .setParameter("clientId", clientId)
+                .getSingleResult();
+    }
+
     public void writeClient(ClientEntity client) {
-        log("DBManager: Write client");
         em.persist(client);
     }
 
     public void writeAddress(AddressEntity address) {
-        log("DBManager: Write address");
         em.persist(address);
     }
 
     public Integer getMaxIdFromDataBase() {
-        log("DBManager: getMaxIdFromDataBase");
-        return em.createQuery("SELECT MAX(c.id) FROM ClientEntity c", Integer.class).getSingleResult();
+        return em.createQuery("SELECT MAX(c.clientid) FROM ClientEntity c", Integer.class).getSingleResult();
     }
 }
