@@ -30,18 +30,25 @@ public class UpdateServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         writer.println("Method GET from UpdateAddServlet\n");
         writer.println("<br>");
-        writer.println("Будем редактировать клиента с номером " + request.getParameter("clientNumber"));
+        writer.println("Будем редактировать клиента с номером " + request.getParameter("clientId"));
         writer.println("<br>");
         writer.println("<jsp:include page=\"webapp\\menu.jsp\">");
 
-        if(updateService.update(Integer.parseInt(request.getParameter("clientNumber")))) {
-            writer.println("<br>");
-            writer.println("Похоже, номер клиента 1.");
-        }
-        else {
-            writer.println("<br>");
-            writer.println("Похоже, номер клиента НЕ 1.");
-        }
+        //Форма редактирования клиента
+        writer.println("<br>");
+        writer.println("<form action=\"${pageContext.request.contextPath}/update\" method=\"POST\">");
+        writer.println("<p>Имя: <input type=\"text\" size=\"20\" name=\"name\" value=\"dfdf\"></p>");
+        writer.println("<p>Тип клиента: <select name=\"clientType\" size=\"1\">");
+        writer.println("<option selected>Физическое лицо</option>");
+        writer.println("<option>Юридическое лицо</option>");
+        writer.println("</select></p>");
+        writer.println("<p>Сетевой IP адрес устройства: <input type=\"text\" size=\"25\" name=\"ipAddress\"></p>");
+        writer.println("<p>Сетевой IP адрес устройства: <input type=\"text\" size=\"25\" name=\"ipAddress\"></p>");
+        writer.println("<p>Физический адрес устройства (MAC): <input type=\"text\" size=\"25\" name=\"macAddress\"></p>");
+        writer.println("<p>Модель устройства: <input type=\"text\" size=\"25\" name=\"model\"></p>");
+        writer.println("<p>Адрес места нахождения: <input type=\"text\" size=\"25\" name=\"postaddress\"></p>");
+        writer.println("<p><input type=\"submit\" name=\"Edit\" value=\"Применить изменения\"></p>");
+        writer.println("</form>");
 
         writer.println(dbManager.readAllAddressesList());
 

@@ -90,8 +90,8 @@ public class ViewListBean implements ViewListService {
                 out.println("<td>" + "Юридическое лицо" + "</td>");
             }
             out.println("<td bgcolor=\"#C0C0C0\">" + addr.getPostaddress() + "</td>");
-            out.println("<td>" + "<a href=\"update?clientNumber=" + cl.getClientid() + "\">Редактировать</a>" + "</td>");
-            out.println("<td>" + "<a href=\"delete?clientNumber=" + cl.getClientid() + "\">Удалить</a>" + "</td>");
+            out.println("<td>" + "<a href=\"update?clientId=" + cl.getClientid() + "\">Редактировать</a>" + "</td>");
+            out.println("<td>" + "<a href=\"delete?clientId=" + cl.getClientid() + "\">Удалить</a>" + "</td>");
             out.println("</tr>");
         }
 

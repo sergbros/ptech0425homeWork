@@ -14,6 +14,7 @@
         <option selected>Физическое лицо</option>
         <option>Юридическое лицо</option>
     </select></p>
+    <p>clientId: <input type="hidden" name="clientId" value=""></p>
     <p>Сетевой IP адрес устройства: <input type="text" size="25" name="ipAddress"></p>
     <p>Физический адрес устройства (MAC): <input type="text" size="25" name="macAddress"></p>
     <p>Модель устройства: <input type="text" size="25" name="model"></p>
