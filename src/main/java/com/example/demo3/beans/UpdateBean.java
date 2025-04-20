@@ -61,7 +61,7 @@ public class UpdateBean implements UpdateService {
         }
 
         if(errorMessage.length() > 0){
-            errorMessage += " не корректны. Проверьте данные.";
+            errorMessage += "\n Не корректны! Сохранение невозможно! Проверьте данные.";
             return errorMessage ;
         }
         else return errorMessage;
