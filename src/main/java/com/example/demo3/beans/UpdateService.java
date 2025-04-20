@@ -1,5 +1,10 @@
 package com.example.demo3.beans;
 
+import com.example.demo3.repositories.entities.AddressEntity;
+
+import java.util.List;
+
 public interface UpdateService {
-    void update(Integer clientId);
+    String check(AddressEntity addressEntities);
+    void update(AddressEntity addressEntities);
 }

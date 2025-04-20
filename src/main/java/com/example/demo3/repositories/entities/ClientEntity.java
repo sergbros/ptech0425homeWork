@@ -1,10 +1,12 @@
 package com.example.demo3.repositories.entities;
 
 import jakarta.persistence.*;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,6 +26,10 @@ public class ClientEntity{
     @Column(name = "added")
     private LocalDate added;
 
+    public ClientEntity() {
+
+    }
+
     @Override
     public String toString() {
         return "ClientEntity{" +
@@ -33,7 +39,21 @@ public class ClientEntity{
                 '}';
     }
 
-//    public ClientObject toClientObject(){
-//        return new ClientObject(id, clientName, type, added);
-//    }
+    public ClientEntity(HttpServletRequest request) {
+        this.setClientName(request.getParameter("name"));
+
+        if (request.getParameter("clientType").equals("Физическое лицо")) {
+            this.setType("1");
+        } else {
+            this.setType("2");
+        }
+
+        if (request.getParameter("added") != null && !request.getParameter("added").isEmpty()) {
+            this.setAdded(LocalDate.parse(request.getParameter("added")));
+        } else {
+            this.setAdded(LocalDate.now());
+        }
+
+        this.setClientid(Integer.valueOf(request.getParameter("clientid")));
+    }
 }

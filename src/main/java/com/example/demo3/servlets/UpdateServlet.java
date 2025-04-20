@@ -48,7 +48,8 @@ public class UpdateServlet extends HttpServlet {
             writer.println("<option selected>Юридическое лицо</option>");
         }
         writer.println("</select></p>");
-        writer.println("<p>id Клиента: <input type=\"text\" size=\"25\" name=\"idClient\" disabled value=\"" + addressEntity.getClientid().getClientid() + "\"></p>");
+        writer.println("<p>id Клиента: <input type=\"text\" size=\"25\" name=\"clientid\" disabled value=\"" + addressEntity.getClientid().getClientid() + "\"></p>");
+        writer.println("<p>дата добавления: <input type=\"text\" size=\"25\" name=\"added\" disabled value=\"" + addressEntity.getClientid().getAdded() + "\"></p>");
         writer.println("<p>Сетевой IP адрес устройства: <input type=\"text\" size=\"25\" name=\"ipAddress\" value=\"" + addressEntity.getClientid().getClientName() + "\"></p>");
         writer.println("<p>Физический адрес устройства (MAC): <input type=\"text\" size=\"25\" name=\"macAddress\" value=\"" + addressEntity.getMac() + "\"></p>");
         writer.println("<p>Модель устройства: <input type=\"text\" size=\"25\" name=\"model\" value=\"" + addressEntity.getModel() + "\"></p>");

@@ -20,7 +20,6 @@ public class CreateServlet extends HttpServlet {
     @EJB
     private DBManager dbManager;
 
-
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
@@ -35,37 +34,20 @@ public class CreateServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         //Создаём клиента
-        ClientEntity client = new ClientEntity();
+        ClientEntity client = new ClientEntity(request);
         //Получаем из БД максимальный существующий Id, чтобы занять следующий
         Integer clientId = dbManager.getMaxIdFromDataBase() + 1;
-        client.setClientName(request.getParameter("name"));
-        client.setType(request.getParameter("clientType"));
-        if(request.getParameter("clientType").equals("Физическое лицо")){
-            client.setType("1");
-        }
-        else{
-            client.setType("2");
-        }
-        //Добавляем сегодняшнюю дату
-        client.setAdded(LocalDate.now());
         client.setClientid(clientId);
 
         //Создаём адрес
-        AddressEntity address = new AddressEntity();
-        address.setIp(request.getParameter("ipAddress"));
-        address.setMac(request.getParameter("macAddress"));
-        address.setModel(request.getParameter("model"));
-        address.setPostaddress(request.getParameter("postaddress"));
-        address.setClientid(client);
+        AddressEntity address = new AddressEntity(request, client);
 
-        PrintWriter writer = response.getWriter();
-        writer.println("Method POST 11a from AddServlet\n");
-        writer.println(client.getClientName() + "\n" + client.getType());
+        //TODO Проверка корректности заполнения полей
 
         dbManager.writeClient(client);
         dbManager.writeAddress(address);
 
         String contextPath = request.getContextPath();
-        response.sendRedirect(contextPath + "/viewList?mode=last10");
+        response.sendRedirect(contextPath + "/viewList?mode=full");
     }
 }
