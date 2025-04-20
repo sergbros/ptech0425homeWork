@@ -11,5 +11,4 @@
 <br/>
 <a href="viewList?mode=clientName">Список всех пользователей c именем Мих</a>
 <br/>
-clientName
 <a href="createClient.jsp">Новый пользователь</a>

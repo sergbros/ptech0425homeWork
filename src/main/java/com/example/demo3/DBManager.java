@@ -34,6 +34,18 @@ public class DBManager {
                 .getResultList();
     }
 
+    public List<AddressEntity> readAllUsersByNameOrAddressAndType(String namePart, String typeClient) {
+        if (namePart == null) namePart = "";
+        String pattern = "%" + namePart + "%";
+        return em.createQuery("SELECT DISTINCT a FROM AddressEntity a " +
+                        "LEFT JOIN FETCH a.clientid " +
+                        "WHERE (a.clientid.clientName LIKE :pattern OR a.postaddress LIKE :pattern) " +
+                        "AND a.clientid.type = :typeClient" , AddressEntity.class)
+                .setParameter("pattern", pattern)
+                .setParameter("typeClient", typeClient)
+                .getResultList();
+    }
+
     public List<ClientEntity> readAllUsersListOld() {
         return em.createQuery("SELECT c FROM ClientEntity c", ClientEntity.class).getResultList();
     }
