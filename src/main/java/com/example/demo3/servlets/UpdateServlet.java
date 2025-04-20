@@ -3,6 +3,7 @@ package com.example.demo3.servlets;
 import com.example.demo3.DBManager;
 import com.example.demo3.beans.UpdateService;
 import com.example.demo3.repositories.entities.AddressEntity;
+import com.example.demo3.repositories.entities.ClientEntity;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -64,13 +65,51 @@ public class UpdateServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
-        //Client client = new Client();
-        //client.setClientName(request.getParameter("name"));
-        //client.setClientType(request.getParameter("clientType"));
 
-        PrintWriter writer = response.getWriter();
-        writer.println("Method POST from UpdateAddServlet\n");
-        //writer.println(client.getClientName() + "\n" + client.getClientType());
+        //Создаём клиента
+        ClientEntity client = new ClientEntity(request);
+        //Создаём адрес
+        AddressEntity address = new AddressEntity(request, client);
 
+        //Проверка корректности заполнения полей
+        String errorMessage = updateService.check(address);
+
+        if(errorMessage.length() < 0) {
+            dbManager.writeClient(client);
+            dbManager.writeAddress(address);
+
+            String contextPath = request.getContextPath();
+            response.sendRedirect(contextPath + "/viewList?mode=full");
+        }
+        else {
+            PrintWriter writer = response.getWriter();
+            writer.println("<jsp:include page=\"webapp\\menu.jsp\">");
+
+            //Форма редактирования клиента
+            writer.println("<br>");
+            writer.println(errorMessage);
+            writer.println("<br>");
+            String contextPath = request.getContextPath();
+            writer.println("<form action=\"" + contextPath + "/update\" method=\"POST\">");
+            writer.println("<p>Имя: <input type=\"text\" size=\"20\" name=\"name\" value=\"" + address.getClientid().getClientName() + "\"></p>");
+            writer.println("<p>Тип клиента: <select name=\"clientType\" size=\"1\">");
+            if(address.getClientid().getType().equals("1")) {
+                writer.println("<option selected>Физическое лицо</option>");
+                writer.println("<option>Юридическое лицо</option>");
+            }
+            else{
+                writer.println("<option>Физическое лицо</option>");
+                writer.println("<option selected>Юридическое лицо</option>");
+            }
+            writer.println("</select></p>");
+            writer.println("<p>id Клиента: <input type=\"text\" size=\"25\" name=\"clientid\" hidden value=\"" + address.getClientid().getClientid() + "\"></p>");
+            writer.println("<p>дата добавления: <input type=\"text\" size=\"25\" name=\"added\" hidden value=\"" + address.getClientid().getAdded() + "\"></p>");
+            writer.println("<p>Сетевой IP адрес устройства: <input type=\"text\" size=\"25\" name=\"ipAddress\" value=\"" + address.getClientid().getClientName() + "\"></p>");
+            writer.println("<p>Физический адрес устройства (MAC): <input type=\"text\" size=\"25\" name=\"macAddress\" value=\"" + address.getMac() + "\"></p>");
+            writer.println("<p>Модель устройства: <input type=\"text\" size=\"25\" name=\"model\" value=\"" + address.getModel() + "\"></p>");
+            writer.println("<p>Адрес места нахождения: <input type=\"text\" size=\"25\" name=\"postaddress\" value=\"" + address.getPostaddress() + "\"></p>");
+            writer.println("<p><input type=\"submit\" name=\"Edit\" value=\"Применить изменения\"></p>");
+            writer.println("</form>");
+        }
     }
 }

@@ -1,7 +1,6 @@
 package com.example.demo3.servlets;
 
 import com.example.demo3.DBManager;
-import com.example.demo3.beans.UpdateBean;
 import com.example.demo3.beans.UpdateService;
 import com.example.demo3.repositories.entities.AddressEntity;
 import com.example.demo3.repositories.entities.ClientEntity;
@@ -14,7 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
 
 @WebServlet(name = "CreateServlet", value = "/create")
 public class CreateServlet extends HttpServlet {
@@ -23,7 +21,7 @@ public class CreateServlet extends HttpServlet {
     private DBManager dbManager;
 
     @EJB
-    private UpdateService updateBean;
+    private UpdateService updateService;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,7 +46,7 @@ public class CreateServlet extends HttpServlet {
         AddressEntity address = new AddressEntity(request, client);
 
         //Проверка корректности заполнения полей
-        String errorMessage = updateBean.check(address);
+        String errorMessage = updateService.check(address);
 
         if(errorMessage.length() < 0) {
             dbManager.writeClient(client);
@@ -59,7 +57,6 @@ public class CreateServlet extends HttpServlet {
         }
         else {
             PrintWriter writer = response.getWriter();
-            //TODO тут надо сделать переход к странице редактирования с сообщением об ошибке
             writer.println("<jsp:include page=\"webapp\\menu.jsp\">");
 
             //Форма редактирования клиента
@@ -79,8 +76,8 @@ public class CreateServlet extends HttpServlet {
                 writer.println("<option selected>Юридическое лицо</option>");
             }
             writer.println("</select></p>");
-            writer.println("<p>id Клиента: <input type=\"text\" size=\"25\" name=\"clientid\" disabled value=\"" + address.getClientid().getClientid() + "\"></p>");
-            writer.println("<p>дата добавления: <input type=\"text\" size=\"25\" name=\"added\" disabled value=\"" + address.getClientid().getAdded() + "\"></p>");
+            writer.println("<p>id Клиента: <input type=\"text\" size=\"25\" name=\"clientid\" hidden value=\"" + address.getClientid().getClientid() + "\"></p>");
+            writer.println("<p>дата добавления: <input type=\"text\" size=\"25\" name=\"added\" hidden value=\"" + address.getClientid().getAdded() + "\"></p>");
             writer.println("<p>Сетевой IP адрес устройства: <input type=\"text\" size=\"25\" name=\"ipAddress\" value=\"" + address.getClientid().getClientName() + "\"></p>");
             writer.println("<p>Физический адрес устройства (MAC): <input type=\"text\" size=\"25\" name=\"macAddress\" value=\"" + address.getMac() + "\"></p>");
             writer.println("<p>Модель устройства: <input type=\"text\" size=\"25\" name=\"model\" value=\"" + address.getModel() + "\"></p>");
