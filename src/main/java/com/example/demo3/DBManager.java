@@ -36,23 +36,13 @@ public class DBManager {
 
     public List<AddressEntity> readAllUsersByNameOrAddressAndType(String namePart, String typeClient) {
         if (namePart == null) namePart = "";
-        String pattern = "%" + namePart + "%";
+        String pattern = "%" + namePart.toLowerCase() + "%";
         return em.createQuery("SELECT DISTINCT a FROM AddressEntity a " +
                         "LEFT JOIN FETCH a.clientid " +
-                        "WHERE (a.clientid.clientName LIKE :pattern OR a.postaddress LIKE :pattern) " +
+                        "WHERE (LOWER(a.clientid.clientName) LIKE LOWER(:pattern) OR LOWER(a.postaddress) LIKE LOWER(:pattern)) " +
                         "AND a.clientid.type = :typeClient" , AddressEntity.class)
                 .setParameter("pattern", pattern)
                 .setParameter("typeClient", typeClient)
-                .getResultList();
-    }
-
-    public List<ClientEntity> readAllUsersListOld() {
-        return em.createQuery("SELECT c FROM ClientEntity c", ClientEntity.class).getResultList();
-    }
-
-    public List<ClientEntity> readTop10LastUsersList() {
-        return em.createQuery("SELECT c FROM ClientEntity c ORDER BY c.clientid DESC", ClientEntity.class)
-                .setMaxResults(10)
                 .getResultList();
     }
 

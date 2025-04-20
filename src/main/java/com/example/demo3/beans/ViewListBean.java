@@ -29,16 +29,28 @@ public class ViewListBean implements ViewListService {
         List<ClientEntity> clientEntities = new ArrayList<>();
         List<AddressEntity> addressEntities = new ArrayList<>();
 
-        switch (mode) {
-            default:
-                addressEntities = dbManager.readAllAddressesList();
-                break;
-            case "clientName":
-                addressEntities = dbManager.readAllUsersByName("Вениами");
-                break;
-            case "find":
-                addressEntities = dbManager.readAllUsersByNameOrAddressAndType("Мих", "1");
-                break;
+        if(mode != null) {
+            switch (mode) {
+                default:
+                    addressEntities = dbManager.readAllAddressesList();
+                    break;
+                case "clientName":
+                    addressEntities = dbManager.readAllUsersByName("Вениами");
+                    break;
+                case "find":
+                    //addressEntities = dbManager.readAllUsersByNameOrAddressAndType("Мих", "1");
+                    String type;
+                    if (request.getParameter("searchClientType").equals("Физическое лицо")) {
+                        type = "1";
+                    } else {
+                        type = "2";
+                    }
+                    addressEntities = dbManager.readAllUsersByNameOrAddressAndType(request.getParameter("searchName"), type);
+                    break;
+            }
+        }
+        else{
+            addressEntities = dbManager.readAllAddressesList();
         }
 
         PrintWriter out = response.getWriter();
