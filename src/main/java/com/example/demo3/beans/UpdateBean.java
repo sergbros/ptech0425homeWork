@@ -5,7 +5,7 @@ import jakarta.ejb.Stateless;
 @Stateless
 public class UpdateBean implements UpdateService {
 
-    public boolean update(Integer clientId){
-        return clientId==1;
+    public void update(Integer clientId){
+
     }
 }

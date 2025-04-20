@@ -16,7 +16,6 @@ import static java.rmi.server.LogStream.log;
 @Log
 @Singleton
 public class DBManager {
-    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
 
     @PersistenceContext
     private EntityManager em;

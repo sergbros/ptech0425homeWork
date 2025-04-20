@@ -6,5 +6,4 @@
     <persistence-unit name="default">
         <jta-data-source>java:/PostgresDS</jta-data-source>
     </persistence-unit>
-
 </persistence>

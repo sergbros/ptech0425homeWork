@@ -29,32 +29,32 @@ public class UpdateServlet extends HttpServlet {
         response.setContentType("text/html");
 
         PrintWriter writer = response.getWriter();
-        writer.println("Method GET from UpdateAddServlet\n");
-        writer.println("<br>");
-        writer.println("Будем редактировать клиента с номером " + request.getParameter("clientid"));
-        writer.println("<br>");
+
         writer.println("<jsp:include page=\"webapp\\menu.jsp\">");
 
         AddressEntity addressEntity = dbManager.readUserById(Integer.valueOf(request.getParameter("clientid")));
-
         //Форма редактирования клиента
         writer.println("<br>");
-        writer.println("<form action=\"${pageContext.request.contextPath}/update\" method=\"POST\">");
+        String contextPath = request.getContextPath();
+        writer.println("<form action=\"" + contextPath + "/update\" method=\"POST\">");
         writer.println("<p>Имя: <input type=\"text\" size=\"20\" name=\"name\" value=\"" + addressEntity.getClientid().getClientName() + "\"></p>");
         writer.println("<p>Тип клиента: <select name=\"clientType\" size=\"1\">");
-        writer.println("<option selected>Физическое лицо</option>");
-        writer.println("<option>Юридическое лицо</option>");
+        if(addressEntity.getClientid().getType().equals("1")) {
+            writer.println("<option selected>Физическое лицо</option>");
+            writer.println("<option>Юридическое лицо</option>");
+        }
+        else{
+            writer.println("<option>Физическое лицо</option>");
+            writer.println("<option selected>Юридическое лицо</option>");
+        }
         writer.println("</select></p>");
-        writer.println("<p>Сетевой IP адрес устройства: <input type=\"text\" size=\"25\" name=\"ipAddress\"></p>");
-        writer.println("<p>Сетевой IP адрес устройства: <input type=\"text\" size=\"25\" name=\"ipAddress\"></p>");
-        writer.println("<p>Физический адрес устройства (MAC): <input type=\"text\" size=\"25\" name=\"macAddress\"></p>");
-        writer.println("<p>Модель устройства: <input type=\"text\" size=\"25\" name=\"model\"></p>");
-        writer.println("<p>Адрес места нахождения: <input type=\"text\" size=\"25\" name=\"postaddress\"></p>");
+        writer.println("<p>id Клиента: <input type=\"text\" size=\"25\" name=\"idClient\" disabled value=\"" + addressEntity.getClientid().getClientid() + "\"></p>");
+        writer.println("<p>Сетевой IP адрес устройства: <input type=\"text\" size=\"25\" name=\"ipAddress\" value=\"" + addressEntity.getClientid().getClientName() + "\"></p>");
+        writer.println("<p>Физический адрес устройства (MAC): <input type=\"text\" size=\"25\" name=\"macAddress\" value=\"" + addressEntity.getMac() + "\"></p>");
+        writer.println("<p>Модель устройства: <input type=\"text\" size=\"25\" name=\"model\" value=\"" + addressEntity.getModel() + "\"></p>");
+        writer.println("<p>Адрес места нахождения: <input type=\"text\" size=\"25\" name=\"postaddress\" value=\"" + addressEntity.getPostaddress() + "\"></p>");
         writer.println("<p><input type=\"submit\" name=\"Edit\" value=\"Применить изменения\"></p>");
         writer.println("</form>");
-
-        writer.println(dbManager.readAllAddressesList());
-
     }
 
     @Override
