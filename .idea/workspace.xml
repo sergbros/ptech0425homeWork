@@ -11,9 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d5c30bf0-46cb-4de6-89ef-3d6c07e536f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/beans/UpdateBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/beans/UpdateBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/beans/UpdateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/beans/UpdateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/CreateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/CreateServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/DBManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/UpdateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo3/servlets/UpdateServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -286,7 +284,7 @@
       <workItem from="1744901915140" duration="12178000" />
       <workItem from="1744952308881" duration="1425000" />
       <workItem from="1744997897718" duration="2497000" />
-      <workItem from="1745068875540" duration="41761000" />
+      <workItem from="1745068875540" duration="42452000" />
     </task>
     <servers />
   </component>

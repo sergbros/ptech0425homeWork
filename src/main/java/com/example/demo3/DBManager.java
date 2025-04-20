@@ -56,8 +56,16 @@ public class DBManager {
         em.persist(client);
     }
 
+    public void updateClient(ClientEntity client) {
+        em.merge(client);
+    }
+
     public void writeAddress(AddressEntity address) {
         em.persist(address);
+    }
+
+    public void updateAddress(AddressEntity address) {
+        em.merge(address);
     }
 
     public Integer getMaxIdFromDataBase() {

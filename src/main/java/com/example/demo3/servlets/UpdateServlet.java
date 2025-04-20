@@ -53,8 +53,8 @@ public class UpdateServlet extends HttpServlet {
         String errorMessage = updateService.check(address);
 
         if(errorMessage.length() <= 0) {
-            dbManager.writeClient(client);
-            dbManager.writeAddress(address);
+            dbManager.updateClient(client);
+            dbManager.updateAddress(address);
 
             String contextPath = request.getContextPath();
             response.sendRedirect(contextPath + "/viewList?mode=full");
