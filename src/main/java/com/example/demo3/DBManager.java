@@ -34,6 +34,13 @@ public class DBManager {
                 .getResultList();
     }
 
+    public AddressEntity readUserById(Integer clientid) {
+        return em.createQuery("SELECT DISTINCT a FROM AddressEntity a " +
+                        "LEFT JOIN FETCH a.clientid WHERE a.clientid.clientid = :clientid", AddressEntity.class)
+                .setParameter("clientid", clientid)
+                .getSingleResult();
+    }
+
     public List<AddressEntity> readAllUsersByNameOrAddressAndType(String namePart, String typeClient) {
         if (namePart == null) namePart = "";
         String pattern = "%" + namePart.toLowerCase() + "%";
@@ -44,12 +51,6 @@ public class DBManager {
                 .setParameter("pattern", pattern)
                 .setParameter("typeClient", typeClient)
                 .getResultList();
-    }
-
-    public ClientEntity readUserById(int clientId) {
-        return em.createQuery("SELECT c FROM ClientEntity c WHERE c.clientid = :clientId", ClientEntity.class)
-                .setParameter("clientId", clientId)
-                .getSingleResult();
     }
 
     public void writeClient(ClientEntity client) {

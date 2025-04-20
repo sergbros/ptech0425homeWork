@@ -2,6 +2,7 @@ package com.example.demo3.servlets;
 
 import com.example.demo3.DBManager;
 import com.example.demo3.beans.UpdateService;
+import com.example.demo3.repositories.entities.AddressEntity;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -30,14 +31,16 @@ public class UpdateServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         writer.println("Method GET from UpdateAddServlet\n");
         writer.println("<br>");
-        writer.println("Будем редактировать клиента с номером " + request.getParameter("clientId"));
+        writer.println("Будем редактировать клиента с номером " + request.getParameter("clientid"));
         writer.println("<br>");
         writer.println("<jsp:include page=\"webapp\\menu.jsp\">");
+
+        AddressEntity addressEntity = dbManager.readUserById(Integer.valueOf(request.getParameter("clientid")));
 
         //Форма редактирования клиента
         writer.println("<br>");
         writer.println("<form action=\"${pageContext.request.contextPath}/update\" method=\"POST\">");
-        writer.println("<p>Имя: <input type=\"text\" size=\"20\" name=\"name\" value=\"dfdf\"></p>");
+        writer.println("<p>Имя: <input type=\"text\" size=\"20\" name=\"name\" value=\"" + addressEntity.getClientid().getClientName() + "\"></p>");
         writer.println("<p>Тип клиента: <select name=\"clientType\" size=\"1\">");
         writer.println("<option selected>Физическое лицо</option>");
         writer.println("<option>Юридическое лицо</option>");

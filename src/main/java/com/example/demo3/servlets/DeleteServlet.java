@@ -21,6 +21,6 @@ public class DeleteServlet extends HttpServlet {
 
         PrintWriter writer = response.getWriter();
         writer.println("Method GET from DELETE Servlet\n");
-        writer.println("Будем УДАЛЯТЬ клиента с номером " + request.getParameter("clientId"));
+        writer.println("Будем УДАЛЯТЬ клиента с номером " + request.getParameter("clientid"));
     }
 }
