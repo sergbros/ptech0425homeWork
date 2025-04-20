@@ -12,4 +12,5 @@ public interface ViewListService {
 
     void viewList(HttpServletRequest request, HttpServletResponse response, String mode) throws ServletException, IOException;
 
+    void viewList(HttpServletRequest request, HttpServletResponse response, String mode, String error) throws IOException, ServletException;
 }

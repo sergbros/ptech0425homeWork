@@ -32,8 +32,15 @@ public class ViewListServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
 
-        String mode = viewListService.viewList(String.valueOf(request.getParameter("mode")));
-        viewListService.viewList(request, response, mode);
+        if(request.getParameter("mode").equals("error")){
+            String mode = String.valueOf(request.getParameter("mode"));
+            String error = String.valueOf(request.getParameter("error"));
+            viewListService.viewList(request, response, mode, error);
+        }
+        else{
+            String mode = viewListService.viewList(String.valueOf(request.getParameter("mode")));
+            viewListService.viewList(request, response, mode);
+        }
     }
 
     @Override

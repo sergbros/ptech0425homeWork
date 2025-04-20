@@ -26,16 +26,19 @@ public class ViewListBean implements ViewListService {
     }
 
     public void viewList(HttpServletRequest request, HttpServletResponse response, String mode) throws ServletException, IOException {
+        viewList(request,  response,  mode, "");
+    }
+
+    public void viewList(HttpServletRequest request, HttpServletResponse response, String mode, String error) throws IOException, ServletException {
         List<ClientEntity> clientEntities = new ArrayList<>();
         List<AddressEntity> addressEntities = new ArrayList<>();
+
+        PrintWriter out = response.getWriter();
 
         if(mode != null) {
             switch (mode) {
                 default:
                     addressEntities = dbManager.readAllAddressesList();
-                    break;
-                case "clientName":
-                    addressEntities = dbManager.readAllUsersByName("Вениами");
                     break;
                 case "find":
                     //addressEntities = dbManager.readAllUsersByNameOrAddressAndType("Мих", "1");
@@ -52,8 +55,6 @@ public class ViewListBean implements ViewListService {
         else{
             addressEntities = dbManager.readAllAddressesList();
         }
-
-        PrintWriter out = response.getWriter();
 
         out.println("<html><head>");
         out.println("<meta charset=\"UTF-8\">");
