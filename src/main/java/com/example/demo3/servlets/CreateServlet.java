@@ -60,6 +60,11 @@ public class CreateServlet extends HttpServlet {
             PrintWriter writer = response.getWriter();
             writer.println("<jsp:include page=\"webapp\\menu.jsp\">");
 
+            //Форма редактирования клиента
+            writer.println("<br>");
+            writer.println(errorMessage);
+            writer.println("<br>");
+
             updateService.update(request, response, address);
         }
     }

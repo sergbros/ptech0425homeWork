@@ -20,8 +20,10 @@ public class UpdateBean implements UpdateService {
              errorMessage += "номер клиента, ";
         }
 
+        String regexClientName = "^[а-яА-ЯёЁ\\s.,-]+$";
         if(!(addressEntity.getClientid().getClientName().length() > 0
-                && addressEntity.getClientid().getClientName().length() < 101)){
+                && addressEntity.getClientid().getClientName().length() < 101
+        && addressEntity.getClientid().getClientName().matches(regexClientName))){
             errorMessage += "имя клиента, ";
         }
 
@@ -65,7 +67,7 @@ public class UpdateBean implements UpdateService {
         }
 
         if(errorMessage.length() > 0){
-            errorMessage += "\n Не корректны! Сохранение невозможно! Проверьте данные.";
+            errorMessage = "Поля: " + errorMessage + " заполнены некорректно! Сохранение невозможно!";
             return errorMessage ;
         }
         else return errorMessage;
@@ -94,7 +96,7 @@ public class UpdateBean implements UpdateService {
         writer.println("<p>Физический адрес устройства (MAC): <input type=\"text\" size=\"25\" name=\"macAddress\" value=\"" + addressEntity.getMac() + "\"></p>");
         writer.println("<p>Модель устройства: <input type=\"text\" size=\"25\" name=\"model\" value=\"" + addressEntity.getModel() + "\"></p>");
         writer.println("<p>Адрес места нахождения: <input type=\"text\" size=\"25\" name=\"postaddress\" value=\"" + addressEntity.getPostaddress() + "\"></p>");
-        writer.println("<p><input type=\"text\" size=\"25\" name=\"addressid\" value=\"" + addressEntity.getAddressid() + "\"></p>");
+        writer.println("<p><input type=\"text\" size=\"25\" name=\"addressid\" hidden value=\"" + addressEntity.getAddressid() + "\"></p>");
         writer.println("<p><input type=\"submit\" name=\"Edit\" value=\"Применить изменения\"></p>");
         writer.println("</form>");
     }
