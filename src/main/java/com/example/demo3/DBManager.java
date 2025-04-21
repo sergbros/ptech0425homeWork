@@ -4,14 +4,10 @@ import com.example.demo3.repositories.entities.AddressEntity;
 import com.example.demo3.repositories.entities.ClientEntity;
 import jakarta.ejb.Singleton;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceContext;
 import lombok.extern.java.Log;
 
 import java.util.List;
-
-import static java.rmi.server.LogStream.log;
 
 @Log
 @Singleton
@@ -60,6 +56,11 @@ public class DBManager {
         em.merge(client);
     }
 
+    public void deleteClient(ClientEntity client) {
+        ClientEntity cl = em.find(ClientEntity.class, client.getClientid());
+        em.remove(cl);
+    }
+
     public void writeAddress(AddressEntity address) {
         em.persist(address);
     }
@@ -68,7 +69,22 @@ public class DBManager {
         em.merge(address);
     }
 
-    public Integer getMaxIdFromDataBase() {
-        return em.createQuery("SELECT MAX(c.clientid) FROM ClientEntity c", Integer.class).getSingleResult();
+    public void deleteAddress(AddressEntity address) {
+        AddressEntity addr = em.find(AddressEntity.class, address.getAddressid());
+        em.remove(addr);
+    }
+
+    public Integer getMaxClientIdFromDataBase() {
+        if(em.createQuery("SELECT MAX(c.clientid) FROM ClientEntity c", Integer.class).getSingleResult() != null) {
+            return em.createQuery("SELECT MAX(c.clientid) FROM ClientEntity c", Integer.class).getSingleResult();
+        }
+        else return 0;
+    }
+
+    public Integer getMaxAddressIdFromDataBase() {
+        if(em.createQuery("SELECT MAX(adr.addressid) FROM AddressEntity adr", Integer.class).getSingleResult() != null) {
+            return em.createQuery("SELECT MAX(adr.addressid) FROM AddressEntity adr", Integer.class).getSingleResult();
+        }
+        else return 0;
     }
 }

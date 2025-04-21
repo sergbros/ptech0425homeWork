@@ -94,6 +94,7 @@ public class UpdateBean implements UpdateService {
         writer.println("<p>Физический адрес устройства (MAC): <input type=\"text\" size=\"25\" name=\"macAddress\" value=\"" + addressEntity.getMac() + "\"></p>");
         writer.println("<p>Модель устройства: <input type=\"text\" size=\"25\" name=\"model\" value=\"" + addressEntity.getModel() + "\"></p>");
         writer.println("<p>Адрес места нахождения: <input type=\"text\" size=\"25\" name=\"postaddress\" value=\"" + addressEntity.getPostaddress() + "\"></p>");
+        writer.println("<p><input type=\"text\" size=\"25\" name=\"addressid\" value=\"" + addressEntity.getAddressid() + "\"></p>");
         writer.println("<p><input type=\"submit\" name=\"Edit\" value=\"Применить изменения\"></p>");
         writer.println("</form>");
     }

@@ -47,7 +47,8 @@ public class UpdateServlet extends HttpServlet {
         //Создаём клиента
         ClientEntity client = new ClientEntity(request);
         //Создаём адрес
-        AddressEntity address = new AddressEntity(request, client);
+        Integer reqClientId = Integer.valueOf(request.getParameter("addressid"));
+        AddressEntity address = new AddressEntity(request, client, reqClientId);
 
         //Проверка корректности заполнения полей
         String errorMessage = updateService.check(address);

@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <IntrospectionStateNumber>785</IntrospectionStateNumber>
+      <IntrospectionStateNumber>888</IntrospectionStateNumber>
       <ServerVersion>17.4</ServerVersion>
       <StartupTime>1744484356</StartupTime>
       <TimeZones>true ACDT
@@ -801,7 +801,7 @@ false Zulu
 14751||10|C|G
 14751||-9223372036854775808|U|G
 14751||10|U|G</Grants>
-      <IntrospectionStateNumber>785</IntrospectionStateNumber>
+      <IntrospectionStateNumber>888</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4223,15 +4223,15 @@ false Zulu
     <schema id="264" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>785</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2025-04-19.17:14:59</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>888</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2025-04-21.16:34:14</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
     <table id="265" parent="264" name="adress">
       <ObjectId>16387</ObjectId>
-      <StateNumber>783</StateNumber>
+      <StateNumber>830</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
@@ -4272,21 +4272,42 @@ false Zulu
       <StoredType>varchar|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="272" parent="265" name="adress_client_fk">
+    <column id="272" parent="265" name="addressid">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>883</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="273" parent="265" name="adress_client_fk">
       <ColNames>clientid</ColNames>
       <ObjectId>16404</ObjectId>
       <StateNumber>781</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16392</RefTableId>
     </foreign-key>
-    <column id="273" parent="266" name="clientid">
+    <index id="274" parent="265" name="adress_pk">
+      <ColNames>addressid</ColNames>
+      <ObjectId>16411</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>883</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="275" parent="265" name="adress_pk">
+      <ObjectId>16412</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>883</StateNumber>
+      <UnderlyingIndexId>16411</UnderlyingIndexId>
+    </key>
+    <column id="276" parent="266" name="clientid">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>748</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="274" parent="266" name="client_name">
+    <column id="277" parent="266" name="client_name">
       <Comment>Имя клиента</Comment>
       <NotNull>1</NotNull>
       <Position>2</Position>
@@ -4294,21 +4315,21 @@ false Zulu
       <StoredType>varchar|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="275" parent="266" name="type">
+    <column id="278" parent="266" name="type">
       <Comment>Тип клиента</Comment>
       <Position>3</Position>
       <StateNumber>748</StateNumber>
       <StoredType>varchar|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="276" parent="266" name="added">
+    <column id="279" parent="266" name="added">
       <Comment>Lfnf lj,fdktybz</Comment>
       <Position>4</Position>
       <StateNumber>748</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <index id="277" parent="266" name="client_pk">
+    <index id="280" parent="266" name="client_pk">
       <ColNames>clientid</ColNames>
       <ObjectId>16397</ObjectId>
       <Primary>1</Primary>
@@ -4316,7 +4337,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="278" parent="266" name="client_pk">
+    <key id="281" parent="266" name="client_pk">
       <ObjectId>16398</ObjectId>
       <Primary>1</Primary>
       <StateNumber>748</StateNumber>

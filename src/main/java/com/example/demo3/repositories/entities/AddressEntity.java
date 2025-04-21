@@ -10,7 +10,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "adress")
 public class AddressEntity {
-    @Id
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "clientid")
     private ClientEntity clientid;
@@ -27,12 +27,17 @@ public class AddressEntity {
     @Column(name = "postaddress")
     private String postaddress;
 
-    public AddressEntity(HttpServletRequest request, ClientEntity clientEntity) {
+    @Id
+    @Column(name = "addressid")
+    private Integer addressid;
+
+    public AddressEntity(HttpServletRequest request, ClientEntity clientEntity, Integer addressid) {
         //Создаём адрес
         this.setIp(request.getParameter("ipAddress"));
         this.setMac(request.getParameter("macAddress"));
         this.setModel(request.getParameter("model"));
         this.setPostaddress(request.getParameter("postaddress"));
+        this.setAddressid(addressid);
         this.setClientid(clientEntity);
     }
 

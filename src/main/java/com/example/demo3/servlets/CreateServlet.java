@@ -39,11 +39,12 @@ public class CreateServlet extends HttpServlet {
         //Создаём клиента
         ClientEntity client = new ClientEntity(request);
         //Получаем из БД максимальный существующий Id, чтобы занять следующий
-        Integer clientId = dbManager.getMaxIdFromDataBase() + 1;
+        Integer clientId = dbManager.getMaxClientIdFromDataBase() + 1;
         client.setClientid(clientId);
 
         //Создаём адрес
-        AddressEntity address = new AddressEntity(request, client);
+        Integer addressId = dbManager.getMaxAddressIdFromDataBase() + 1;
+        AddressEntity address = new AddressEntity(request, client, addressId);
 
         //Проверка корректности заполнения полей
         String errorMessage = updateService.check(address);
