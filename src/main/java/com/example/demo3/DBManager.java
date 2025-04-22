@@ -5,6 +5,7 @@ import com.example.demo3.repositories.entities.ClientEntity;
 import jakarta.ejb.Singleton;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import lombok.extern.java.Log;
 
 import java.util.List;
@@ -56,6 +57,7 @@ public class DBManager {
         em.merge(client);
     }
 
+    @Transactional
     public void deleteClient(ClientEntity client) {
         ClientEntity cl = em.find(ClientEntity.class, client.getClientid());
         em.remove(cl);
@@ -69,6 +71,7 @@ public class DBManager {
         em.merge(address);
     }
 
+    @Transactional
     public void deleteAddress(AddressEntity address) {
         AddressEntity addr = em.find(AddressEntity.class, address.getAddressid());
         em.remove(addr);
