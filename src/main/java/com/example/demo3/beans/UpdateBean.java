@@ -103,7 +103,7 @@ public class UpdateBean implements UpdateService {
         else {
             PrintWriter writer = response.getWriter();
             String contextPath = request.getContextPath();
-            writer.println("<form action=\"" + contextPath + "/update\" method=\"POST\">");
+            writer.println("<form action=\"" + contextPath + "/update?key=none\" method=\"POST\">");
             writer.println("<p>Имя: <input type=\"text\" size=\"20\" name=\"name\" value=\"" + addressEntity.getClientid().getClientName() + "\"></p>");
             writer.println("<p>Тип клиента: <select name=\"clientType\" size=\"1\">");
             if (addressEntity.getClientid().getType().equals("1")) {
