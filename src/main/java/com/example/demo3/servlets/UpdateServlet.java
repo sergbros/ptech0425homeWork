@@ -33,7 +33,7 @@ public class UpdateServlet extends HttpServlet {
 
         writer.println("<jsp:include page=\"webapp\\menu.jsp\">");
 
-        AddressEntity addressEntity = dbManager.readUserById(Integer.valueOf(request.getParameter("clientid")));
+        AddressEntity addressEntity = dbManager.readAddresById(Integer.valueOf(request.getParameter("addr")));
         updateService.update(request, response, addressEntity);
     }
 

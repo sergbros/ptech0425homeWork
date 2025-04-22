@@ -10,7 +10,7 @@
 <body>
 <h1><%= "Добавление вымышленного клиента" %>
 </h1>
-<form action="${pageContext.request.contextPath}/create" method="POST">
+<form action="${pageContext.request.contextPath}/create?clientid=none&key=none" method="POST">
     <p>Имя: <input type="text" size="20" name="name"></p>
     <p>Тип клиента: <select name="clientType" size="1">
         <option selected>Физическое лицо</option>

@@ -36,11 +36,14 @@ public class CreateServlet extends HttpServlet {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
 
-        //Создаём клиента
         ClientEntity client = new ClientEntity(request);
-        //Получаем из БД максимальный существующий Id, чтобы занять следующий
-        Integer clientId = dbManager.getMaxClientIdFromDataBase() + 1;
-        client.setClientid(clientId);
+
+        if(!(request.getParameter("key").equals("addaddress"))){
+            //Получаем из БД максимальный существующий Id, чтобы занять следующий
+            //Если это не второй адрес для существующего уже пользователя
+            Integer clientId = dbManager.getMaxClientIdFromDataBase() + 1;
+            client.setClientid(clientId);
+        }
 
         //Создаём адрес
         Integer addressId = dbManager.getMaxAddressIdFromDataBase() + 1;
@@ -50,7 +53,9 @@ public class CreateServlet extends HttpServlet {
         String errorMessage = updateService.check(address);
 
         if(errorMessage.length() <= 0) {
-            dbManager.writeClient(client);
+            if(!(request.getParameter("key").equals("addaddress"))) {
+                dbManager.writeClient(client);
+            }
             dbManager.writeAddress(address);
 
             String contextPath = request.getContextPath();

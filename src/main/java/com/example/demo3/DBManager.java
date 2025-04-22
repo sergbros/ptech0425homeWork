@@ -30,10 +30,17 @@ public class DBManager {
                 .getResultList();
     }
 
-    public AddressEntity readUserById(Integer clientid) {
+    public AddressEntity readUserById(Integer clientId) {
         return em.createQuery("SELECT DISTINCT a FROM AddressEntity a " +
                         "LEFT JOIN FETCH a.clientid WHERE a.clientid.clientid = :clientid", AddressEntity.class)
-                .setParameter("clientid", clientid)
+                .setParameter("clientid", clientId)
+                .getSingleResult();
+    }
+
+    public AddressEntity readAddresById(Integer addressId) {
+        return em.createQuery("SELECT DISTINCT a FROM AddressEntity a " +
+                        "LEFT JOIN FETCH a.clientid WHERE a.addressid = :addrid", AddressEntity.class)
+                .setParameter("addrid", addressId)
                 .getSingleResult();
     }
 
