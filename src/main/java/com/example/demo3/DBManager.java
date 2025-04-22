@@ -44,6 +44,10 @@ public class DBManager {
                 .getSingleResult();
     }
 
+    public ClientEntity readClientById(Integer ClientId) {
+        return em.find(ClientEntity.class, ClientId);
+    }
+
     public List<AddressEntity> readAllUsersByNameOrAddressAndType(String namePart, String typeClient) {
         if (namePart == null) namePart = "";
         String pattern = "%" + namePart.toLowerCase() + "%";

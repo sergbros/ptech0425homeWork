@@ -54,6 +54,8 @@ public class ClientEntity{
             this.setAdded(LocalDate.now());
         }
 
-        this.setClientid(Integer.valueOf(request.getParameter("clientid")));
+        if(!(request.getParameter("clientid").equals("none"))) {
+            this.setClientid(Integer.valueOf(request.getParameter("clientid")));
+        }
     }
 }

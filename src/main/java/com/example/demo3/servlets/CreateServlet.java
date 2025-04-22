@@ -36,9 +36,13 @@ public class CreateServlet extends HttpServlet {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
 
-        ClientEntity client = new ClientEntity(request);
+        ClientEntity client;
 
-        if(!(request.getParameter("key").equals("addaddress"))){
+        if(request.getParameter("key").equals("addaddress")) {
+            client = dbManager.readClientById(Integer.parseInt(request.getParameter("clientid")));
+        }
+        else{
+            client = new ClientEntity(request);
             //Получаем из БД максимальный существующий Id, чтобы занять следующий
             //Если это не второй адрес для существующего уже пользователя
             Integer clientId = dbManager.getMaxClientIdFromDataBase() + 1;
