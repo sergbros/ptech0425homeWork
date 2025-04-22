@@ -18,7 +18,7 @@ public class DBManager {
     private EntityManager em;
 
     public List<AddressEntity> readAllAddressesList() {
-        return em.createQuery("SELECT DISTINCT a FROM AddressEntity a " +
+        return em.createQuery("SELECT a FROM AddressEntity a " +
                 "LEFT JOIN FETCH a.clientid", AddressEntity.class).getResultList();
     }
 
@@ -30,15 +30,15 @@ public class DBManager {
                 .getResultList();
     }
 
-    public AddressEntity readUserById(Integer clientId) {
-        return em.createQuery("SELECT DISTINCT a FROM AddressEntity a " +
+    public List<AddressEntity> readAddressListByClientId(Integer clientId) {
+        return em.createQuery("SELECT a FROM AddressEntity a " +
                         "LEFT JOIN FETCH a.clientid WHERE a.clientid.clientid = :clientid", AddressEntity.class)
                 .setParameter("clientid", clientId)
-                .getSingleResult();
+                .getResultList();
     }
 
     public AddressEntity readAddresById(Integer addressId) {
-        return em.createQuery("SELECT DISTINCT a FROM AddressEntity a " +
+        return em.createQuery("SELECT a FROM AddressEntity a " +
                         "LEFT JOIN FETCH a.clientid WHERE a.addressid = :addrid", AddressEntity.class)
                 .setParameter("addrid", addressId)
                 .getSingleResult();

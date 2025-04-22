@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(name = "DeleteServlet", value = "/delete")
 public class DeleteServlet extends HttpServlet {
@@ -30,12 +31,15 @@ public class DeleteServlet extends HttpServlet {
         writer.println("Method GET from DELETE Servlet\n");
         writer.println("Будем УДАЛЯТЬ клиента с номером " + request.getParameter("clientid"));
 
-        AddressEntity addressEntity = dbManager.readUserById(Integer.valueOf(request.getParameter("clientid")));
+        //AddressEntity addressEntity = dbManager.readUserById(Integer.valueOf(request.getParameter("clientid")));
+        AddressEntity addressEntity = dbManager.readAddresById(Integer.valueOf(request.getParameter("addr")));
         ClientEntity clientEntity = addressEntity.getClientid();
 
+        List<AddressEntity> clientAddressesList = dbManager.readAddressListByClientId(clientEntity.getClientid());
+
         dbManager.deleteAddress(addressEntity);
-        //TODO Нужна проверка привязки клиента к другому адресу
-        if(true){
+        //Проверка привязки клиента к другому адресу
+        if(clientAddressesList.size() < 2){
             dbManager.deleteClient(clientEntity);
         }
 

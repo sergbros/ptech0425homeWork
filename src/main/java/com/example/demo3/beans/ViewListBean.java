@@ -91,9 +91,9 @@ public class ViewListBean implements ViewListService {
                 out.println("<td>" + "Юридическое лицо" + "</td>");
             }
             out.println("<td bgcolor=\"#C0C0C0\">" + addr.getPostaddress() + "</td>");
-            out.println("<td>" + "<a href=\"update?clientid=" + cl.getClientid() + "&addr=" + addr.getAddressid() + "&key=none\">Редактировать</a>" + "</td>");
-            out.println("<td>" + "<a href=\"update?clientid=" + cl.getClientid() + "&addr=" + addr.getAddressid() + "&key=addaddress\">Добавить адрес</a>" + "</td>");
-            out.println("<td>" + "<a href=\"delete?clientid=" + cl.getClientid() + "\">Удалить</a>" + "</td>");
+            out.println("<td>" + "<a href=\"update?clientid=" + cl.getClientid() + "&addr=" + addr.getAddressid() + "&key=none\">[ Редактировать…]</a>" + "</td>");
+            out.println("<td>" + "<a href=\"update?clientid=" + cl.getClientid() + "&addr=" + addr.getAddressid() + "&key=addaddress\">[ Добавить адрес…]</a>" + "</td>");
+            out.println("<td>" + "<a href=\"delete?clientid=" + cl.getClientid() + "&addr=" + addr.getAddressid() + "\">[ Удалить ]</a>" + "</td>");
             out.println("</tr>");
         }
 
