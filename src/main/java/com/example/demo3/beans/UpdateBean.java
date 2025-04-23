@@ -2,6 +2,8 @@ package com.example.demo3.beans;
 
 import com.example.demo3.repositories.entities.AddressEntity;
 import jakarta.ejb.Stateless;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -73,11 +75,13 @@ public class UpdateBean implements UpdateService {
         else return errorMessage;
     }
 
-    public void update(HttpServletRequest request, HttpServletResponse response, AddressEntity addressEntity) throws IOException {
+    public void update(HttpServletRequest request, HttpServletResponse response, AddressEntity addressEntity) throws IOException, ServletException {
         if(request.getParameter("key").equals("addaddress")){
             //Добавление адреса к уже имеющимся
             PrintWriter writer = response.getWriter();
             String contextPath = request.getContextPath();
+
+            writer.println("<h1>Добавление адреса</h1>");
             writer.println("<form action=\"" + contextPath + "/create?clientid="+ addressEntity.getClientid().getClientid() + "&key=addaddress\" method=\"POST\">");
             writer.println("<p>Имя: <input disabled type=\"text\" size=\"20\" name=\"name\" value=\"" + addressEntity.getClientid().getClientName() + "\"></p>");
             if (addressEntity.getClientid().getType().equals("1")) {
@@ -95,10 +99,14 @@ public class UpdateBean implements UpdateService {
             writer.println("<p>Адрес места нахождения: <input type=\"text\" size=\"25\" name=\"postaddress\"></p>");
             writer.println("<p><input type=\"submit\" name=\"Edit\" value=\"Добавить адрес\"></p>");
             writer.println("</form>");
+
+            RequestDispatcher footerDispatcherBottom = request.getRequestDispatcher("/menu.jsp");
+            footerDispatcherBottom.include(request, response);
         }
         else {
             PrintWriter writer = response.getWriter();
             String contextPath = request.getContextPath();
+            writer.println("<h1>Редактирование данных</h1>");
             writer.println("<form action=\"" + contextPath + "/update?key=none\" method=\"POST\">");
             writer.println("<p>Имя: <input type=\"text\" size=\"20\" name=\"name\" value=\"" + addressEntity.getClientid().getClientName() + "\"></p>");
             writer.println("<p>Тип клиента: <select name=\"clientType\" size=\"1\">");
@@ -120,6 +128,9 @@ public class UpdateBean implements UpdateService {
             writer.println("<p><input type=\"text\" size=\"25\" name=\"addressid\" hidden value=\"" + addressEntity.getAddressid() + "\"></p>");
             writer.println("<p><input type=\"submit\" name=\"Edit\" value=\"Применить изменения\"></p>");
             writer.println("</form>");
+
+            RequestDispatcher footerDispatcherBottom = request.getRequestDispatcher("/menu.jsp");
+            footerDispatcherBottom.include(request, response);
         }
     }
 }
