@@ -71,7 +71,7 @@ public class CreateServlet extends HttpServlet {
 
             //Форма редактирования клиента
             writer.println("<br>");
-            writer.println(errorMessage);
+            writer.println("<p style='color: red;'>" + errorMessage + "<p>");
             writer.println("<br>");
 
             updateService.update(request, response, address);

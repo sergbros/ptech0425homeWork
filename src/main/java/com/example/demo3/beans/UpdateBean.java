@@ -80,15 +80,11 @@ public class UpdateBean implements UpdateService {
             String contextPath = request.getContextPath();
             writer.println("<form action=\"" + contextPath + "/create?clientid="+ addressEntity.getClientid().getClientid() + "&key=addaddress\" method=\"POST\">");
             writer.println("<p>Имя: <input disabled type=\"text\" size=\"20\" name=\"name\" value=\"" + addressEntity.getClientid().getClientName() + "\"></p>");
-            writer.println("<p>Тип клиента: <select name=\"clientType\" size=\"1\">");
             if (addressEntity.getClientid().getType().equals("1")) {
-                writer.println("<option selected>Физическое лицо</option>");
-                writer.println("<option>Юридическое лицо</option>");
+                writer.println("<p>Тип клиента: <input disabled type=\"text\" size=\"20\" name=\"clientType\" value=\"Физическое лицо\"></p>");
             } else {
-                writer.println("<option>Физическое лицо</option>");
-                writer.println("<option selected>Юридическое лицо</option>");
+                writer.println("<p>Тип клиента: <input disabled type=\"text\" size=\"20\" name=\"clientType\" value=\"Юридическое лицо\"></p>");
             }
-            writer.println("</select></p>");
 
             writer.println("<p><input disabled type=\"text\" size=\"25\" name=\"clientid\" hidden value=\"" + addressEntity.getClientid().getClientid() + "\"></p>");
             writer.println("<p><input disabled type=\"text\" size=\"25\" name=\"added\" hidden value=\"" + addressEntity.getClientid().getAdded() + "\"></p>");
