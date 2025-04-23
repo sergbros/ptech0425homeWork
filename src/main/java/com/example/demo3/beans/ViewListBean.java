@@ -68,15 +68,16 @@ public class ViewListBean implements ViewListService {
         footerDispatcher.include(request, response);
 
         //Таблица
-        out.println("<table border=\"0\">");
+        out.println("<table bgcolor=\"#d5f5e3\" border=\"0\">");
         //Заголовок
         out.println("<tr>");
-        out.println("<td><p align=\"center\">Number</td>");
-        out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Name</td>");
-        out.println("<td><p align=\"center\">Type</td>");
-        out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Address</td>");
-        out.println("<td><p align=\"center\">Edit</td>");
-        out.println("<td bgcolor=\"#C0C0C0\"><p align=\"center\">Удаление</td>");
+        out.println("<td><p align=\"center\">N</td>");
+        out.println("<td bgcolor=\"#a9dfbf\"><p align=\"center\">Имя клиента</td>");
+        out.println("<td><p align=\"center\">Тип клиента</td>");
+        out.println("<td bgcolor=\"#a9dfbf\"><p align=\"center\">Адрес места нахождения</td>");
+        out.println("<td><p align=\"center\">Редактирование</td>");
+        out.println("<td bgcolor=\"#a9dfbf\"><p align=\"center\">Добавление адресов</td>");
+        out.println("<td><p align=\"center\">Удаление записи</td>");
         out.println("</tr>");
 
         //Строка
@@ -84,16 +85,16 @@ public class ViewListBean implements ViewListService {
             ClientEntity cl = (addr.getClientid());
             out.println("<tr>");
             out.println("<td>" + cl.getClientid() + "</td>");
-            out.println("<td bgcolor=\"#C0C0C0\">" + cl.getClientName() + "</td>");
+            out.println("<td bgcolor=\"#a9dfbf\">" + cl.getClientName() + "</td>");
             if (Integer.parseInt(cl.getType()) == 1) {
                 out.println("<td>" + "Физическое лицо" + "</td>");
             } else {
                 out.println("<td>" + "Юридическое лицо" + "</td>");
             }
-            out.println("<td bgcolor=\"#C0C0C0\">" + addr.getPostaddress() + "</td>");
-            out.println("<td>" + "<a href=\"update?clientid=" + cl.getClientid() + "&addr=" + addr.getAddressid() + "&key=none\">[ Редактировать…]</a>" + "</td>");
-            out.println("<td>" + "<a href=\"update?clientid=" + cl.getClientid() + "&addr=" + addr.getAddressid() + "&key=addaddress\">[ Добавить адрес…]</a>" + "</td>");
-            out.println("<td>" + "<a href=\"delete?clientid=" + cl.getClientid() + "&addr=" + addr.getAddressid() + "\">[ Удалить ]</a>" + "</td>");
+            out.println("<td bgcolor=\"#a9dfbf\">" + addr.getPostaddress() + "</td>");
+            out.println("<td>" + "<a href=\"update?clientid=" + cl.getClientid() + "&addr=" + addr.getAddressid() + "&key=none\">[ > ]</a>" + "</td>");
+            out.println("<td bgcolor=\"#a9dfbf\">" + "<a href=\"update?clientid=" + cl.getClientid() + "&addr=" + addr.getAddressid() + "&key=addaddress\">[ + ]</a>" + "</td>");
+            out.println("<td>" + "<a href=\"delete?clientid=" + cl.getClientid() + "&addr=" + addr.getAddressid() + "\">[ - ]</a>" + "</td>");
             out.println("</tr>");
         }
 

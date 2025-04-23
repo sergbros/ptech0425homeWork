@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>База клиентов вымышленного провайдера</title>
 </head>
 <body>
 <h1><%= "База клиентов вымышленного провайдера" %>
